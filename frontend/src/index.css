@@ -97,8 +97,12 @@ h3{
 opacity: 0 !important
 }
 
-
-
+.sidnav_div{
+  width: 10vw;
+}
+.main_container{
+  width: 88vw;
+}
 @media only screen and (max-width: 1000px) {
   .carousel-caption h2 {
     font-size: 1rem;
@@ -111,6 +115,13 @@ opacity: 0 !important
   }
   .qty_input{
     width:10rem
+  }
+  .sidenav_div{
+    display: none;
+    width: 0vw 
+  }
+  .main_container{
+    width: 100vw;
   }
   
 }

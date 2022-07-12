@@ -132,12 +132,18 @@ export const productTopRatedReducer = (state = { products: [] }, action) => {
       return state;
   }
 };
-export const productSimilarReducer = (state = { products: [] }, action) => {
+export const productSimilarReducer = (
+  state = { productsList: { categoryList: [], brandList: [] } },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_SIMILAR_REQUEST:
-      return { loading: true, products: [] };
+      return {
+        loading: true,
+        productsList: { categoryList: [], brandList: [] },
+      };
     case PRODUCT_SIMILAR_SUCCESS:
-      return { loading: false, products: action.payload };
+      return { loading: false, productsList: action.payload };
     case PRODUCT_SIMILAR_FAIL:
       return { loading: false, error: action.payload };
     default:

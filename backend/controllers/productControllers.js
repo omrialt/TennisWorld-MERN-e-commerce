@@ -1,6 +1,6 @@
 import Product from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
-
+import mongoose from "mongoose";
 //action-get all products
 //method-GET
 //route-/api/products
@@ -159,11 +159,21 @@ const getTopProducts = asyncHandler(async (req, res) => {
 //route-/api/products/similar
 //access-any
 const getSimilarProducts = asyncHandler(async (req, res) => {
-  const { category, brand } = req.query;
+  const { category, brand, id } = req.query;
+  console.log(id);
 
-  const productsCategory = await Product.find({ category: category });
+  const product = await Product.findById(id);
 
-  const productsBrand = await Product.find({ brand: brand });
+  const productsCategory = await Product.find({
+    category: category,
+    name: { $nin: product.name },
+    brand: { $nin: product.brand },
+  });
+
+  const productsBrand = await Product.find({
+    brand: brand,
+    name: { $nin: product.name },
+  });
 
   const randomOrderCategory = await productsCategory.sort(
     (a, b) => 0.5 - Math.random()

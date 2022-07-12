@@ -1,12 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
 const Footer = () => {
   return (
-    <footer>
-      <Container>
-        <Row>
-          <Col className="text-center py-3">Copyright &copy;Proshop</Col>
-        </Row>
-      </Container>
+    <footer className="bg-dark" style={{ width: "100%" }}>
+      <Row>
+        <Col className="text-center py-3">Copyright &copy;Proshop</Col>
+      </Row>
     </footer>
   );
 };

@@ -2,8 +2,8 @@ import { Fragment, useContext } from "react";
 import ShopContext from "../store/shop-context";
 import Header from "./Header";
 import Footer from "./Footer";
+import SideNav from "./SideNav";
 import { Container } from "react-bootstrap";
-import SideBarMenu from "react-bootstrap-sidebar-menu";
 
 const Layout = (props) => {
   const shopCtx = useContext(ShopContext);
@@ -18,9 +18,16 @@ const Layout = (props) => {
   return (
     <div>
       <Header />
-      <Container className="my-5" onClick={toggle}>
-        <main className="py-3">{props.children}</main>
-      </Container>
+      <div style={{ display: "flex" }}>
+        <div className="sidenav_div">
+          <SideNav />
+        </div>
+        <div className="main_container">
+          <Container className="my-5" onClick={toggle}>
+            <main className="py-3">{props.children}</main>
+          </Container>
+        </div>
+      </div>
       <Footer />
     </div>
   );

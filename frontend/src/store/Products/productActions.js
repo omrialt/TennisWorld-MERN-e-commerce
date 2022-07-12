@@ -211,23 +211,25 @@ export const listTopProducts = () => async (dispatch) => {
     });
   }
 };
-export const listSimilarProducts = (category, brand) => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_SIMILAR_REQUEST });
-    const { data } = await axios.get(
-      `/api/products/similar/?category=${category}&brand=${brand}`
-    );
-    dispatch({
-      type: PRODUCT_SIMILAR_SUCCESS,
-      payload: data,
-    });
-  } catch (err) {
-    dispatch({
-      type: PRODUCT_SIMILAR_FAIL,
-      payload:
-        err.response && err.response.data.message
-          ? err.response.data.message
-          : err.message,
-    });
-  }
-};
+export const listSimilarProducts =
+  (category = "", brand = "", id = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_SIMILAR_REQUEST });
+      const { data } = await axios.get(
+        `/api/products/similar/?category=${category}&brand=${brand}&id=${id}`
+      );
+      dispatch({
+        type: PRODUCT_SIMILAR_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: PRODUCT_SIMILAR_FAIL,
+        payload:
+          err.response && err.response.data.message
+            ? err.response.data.message
+            : err.message,
+      });
+    }
+  };

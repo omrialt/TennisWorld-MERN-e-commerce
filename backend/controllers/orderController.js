@@ -4,7 +4,6 @@ import asyncHandler from "express-async-handler";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import sendgridTransport from "nodemailer-sendgrid-transport";
-import mongoose from "mongoose";
 
 dotenv.config();
 
@@ -52,7 +51,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
     });
     for (const item of items) {
       const pro = await Product.findById(item.productId);
-      console.log(pro);
       pro.countInStock -= items[0].qty;
       await pro.save();
     }
@@ -98,7 +96,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
           <td>${item.name}</td>
           <td>$${item.price}</td>
           <td>${item.qty}</td>
-          <td>$${item.qty * item.price}</td>
+          <td>$${(item.qty * item.price).toFixed(2)}</td>
           </tr>`;
       })}
       </tbody>
@@ -199,7 +197,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
 //action-update order to delivered
 //method-PUT
-//route-/api/orderS/:id/delivered
+//route-/api/orders/:id/delivered
 //access-protect,admin
 const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
@@ -231,7 +229,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
           <td>${item.name}</td>
           <td>$${item.price}</td>
           <td>${item.qty}</td>
-          <td>$${item.qty * item.price}</td>
+          <td>$${(item.qty * item.price).toFixed(2)}</td>
           </tr>`;
       })}
       </tbody>

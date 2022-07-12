@@ -25,6 +25,7 @@ import {
 } from "../store/Products/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import ProductInScreen from "../components/ProductInScreen";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../store/Products/productConstants";
 import { addToWishList, addToCart } from "../store/Cart/CartActions";
 
@@ -52,9 +53,14 @@ const ProductScreen = () => {
   const {
     loading: loadingSimilar,
     error: errorSimilar,
-    products: productsSimilarList,
+    productsList,
   } = productSimilar;
 
+  const {
+    name: productName,
+    category: productCategory,
+    brand: productBrand,
+  } = product;
   //get user login info
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -62,9 +68,9 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     Swal.fire({
       icon: "success",
-      title: `${product.name} add to cart secussefuly`,
+      title: `${productName} add to cart secussefuly`,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
     dispatch(addToCart(id, qty));
     setTimeout(() => {
@@ -74,9 +80,9 @@ const ProductScreen = () => {
   const addToWishListHandler = () => {
     Swal.fire({
       icon: "success",
-      title: `${product.name} add to wishlist secussefuly`,
+      title: `${productName} add to wishlist secussefuly`,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
     dispatch(addToWishList(id));
     setTimeout(() => {
@@ -93,9 +99,9 @@ const ProductScreen = () => {
       })
     );
   };
-  console.log(productsSimilarList);
+
   useEffect(() => {
-    document.title = `${product.name}`;
+    document.title = `${productName}`;
     if (successProductReview) {
       alert("Review submitted");
       setRating(0);
@@ -103,16 +109,16 @@ const ProductScreen = () => {
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
     dispatch(listProductDetails(id));
-    dispatch(listSimilarProducts(product.category, product.brand));
+    dispatch(listSimilarProducts(productCategory, productBrand, id));
   }, [
     dispatch,
     id,
     successProductReview,
-    product.name,
-    product.category,
-    product.brand,
+    productCategory,
+    productBrand,
+    productName,
   ]);
-
+  console.log(productsList);
   return (
     <Fragment>
       {loading ? (
@@ -355,6 +361,32 @@ const ProductScreen = () => {
               </ListGroup>
             </Col>
           </Row>
+          <hr />
+        </Fragment>
+      )}
+      {loadingSimilar ? (
+        <Loader />
+      ) : errorSimilar ? (
+        <Message variant="red">{errorSimilar}</Message>
+      ) : (
+        <Fragment>
+          <h2>Similar Products:</h2>
+          <Row>
+            {productsList.categoryList.map((prod) => (
+              <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
+                <ProductInScreen product={prod} />
+              </Col>
+            ))}
+          </Row>
+
+          <h2>Other From {product.brand}:</h2>
+          <Row>
+            {productsList.brandList.map((prod) => (
+              <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
+                <ProductInScreen product={prod} />
+              </Col>
+            ))}
+          </Row>
         </Fragment>
       )}
     </Fragment>
@@ -376,6 +408,23 @@ export default ProductScreen;
                 </Col>
               ))}
             </Row>
+            <h2>Similar Products:</h2>
+            <Row>
+              {productsSimilarList.categoryList.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+            </Row>
+            </Fragment>
+          )}
+*/
+/*{loadingSimilar ? (
+            <Loader />
+          ) : errorSimilar ? (
+            <Message variant="red">{errorSimilar}</Message>
+          ) : (
+            <Fragment>
             <h2>Similar Products:</h2>
             <Row>
               {productsSimilarList.categoryList.map((product) => (

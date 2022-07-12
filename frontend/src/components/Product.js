@@ -35,7 +35,7 @@ const Product = ({ product }) => {
       icon: "success",
       title: `${product.name} add to cart secussefuly`,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
     dispatch(addToCart(product._id, 1));
   };
@@ -46,7 +46,7 @@ const Product = ({ product }) => {
       icon: "success",
       title: `${product.name} add to wishlist secussefuly`,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
     dispatch(addToWishList(product._id));
   };
