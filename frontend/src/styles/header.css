@@ -1,0 +1,35 @@
+.select_nav{
+    margin-top: 4px; 
+    animation: selectInputOpen 0.5s ease-out forwards;
+  }
+  .cart{
+    position: relative;
+  }
+  .cart-items{
+    position: absolute;
+      top: -12px;
+      left: -10px;
+      border-radius: 50%;
+      background-color: #000;
+      font-size: .65em;
+      padding: 3px 5px;
+      color: #fff;
+      text-align: center;
+      z-index: 3;
+  }
+  .fa-shopping-cart{
+    position: relative;
+    cursor: pointer;
+  }
+  .nav-link{
+    color: white;
+  }
+  .nav-link:hover{
+    transform: scale(1.1);
+  }
+  .active{
+    color: white !important;
+  }
+  .brand{
+    color: white !important;
+  }

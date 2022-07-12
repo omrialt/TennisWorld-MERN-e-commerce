@@ -1,0 +1,46 @@
+@local=http://localhost:5000
+GET {{local}}
+###
+GET {{local}}/api/products
+###
+GET {{local}}/api/products/2
+###
+GET {{local}}/api/products
+###
+GET {{local}}/api/products/62b0c4d34a2b289ddb169743
+###
+POST {{local}}/api/users/login
+Content-Type: application/json
+
+{
+    "email":"user@example.com",
+    "password":"123456"
+} 
+###
+GET {{local}}/api/users/profile
+###
+//new users
+POST {{local}}/api/users
+Content-Type: application/json
+
+{
+    "name":"example example",
+    "email":"usasony44@gmail.com",
+    "password":"0504050"
+} 
+###
+PUT {{local}}/api/users/profile
+x_auth_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjBjNGQzNGEyYjI4OWRkYjE4NTc0MCIsImlhdCI6MTY1NjI0ODM2NiwiZXhwIjoxNjU4ODQwMzY2fQ.xIxz3PbUXhWfgqoa_2iLSqYH0kgMcEbyv0Oakrr-Kf0
+Content-Type: application/json
+
+{
+    "name":"Janeis Does",
+    "email":"user@example.com",
+    "password":"123456"
+} 
+###
+GET {{local}}/api/orders/myorders
+x_auth_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjlhZTc2NTc0MmQ2MDZhNDkwN2ExZSIsImlhdCI6MTY1NjM0ODAwMywiZXhwIjoxNjU4OTQwMDAzfQ.dCVorOLWb9R5it42N96n-fzAt_maht7t54dBwe7f2Sw
+###
+GET {{local}}/api/users
+x_auth_token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjlhZTc2NTc0MmQ2MDZhNDkwN2ExZSIsImlhdCI6MTY1NjQwNTIzNiwiZXhwIjoxNjU4OTk3MjM2fQ.oKkUlDkN0Xlaxepo06v15iGUxzsV0RXApX7zncC4v6E

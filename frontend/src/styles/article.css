@@ -1,0 +1,36 @@
+.article_card{
+    height: 70vh;
+    position: relative;
+    backface-visibility: hidden;
+  }
+  .article_flex{
+    display: flex;
+    vertical-align: baseline;
+  }
+  .article_img{
+    height: 30vh;
+    width: 30vw;
+    border: 1px solid black;
+    margin-right: 0.8rem;
+  }
+  .article_img_x{
+    margin-right: 0.8rem;
+  }
+  .article_text{
+    margin: 0.8rem 0;
+  }
+  .author{
+    margin-right: 1.5rem;
+  }
+  @media only screen and (max-width: 1000px){
+    .article_card{
+        height: 78vh;
+      }
+      .article_flex{
+        flex-direction: column-reverse;
+        
+      }
+      .article_img{
+        width: 92vw;
+      }
+  }

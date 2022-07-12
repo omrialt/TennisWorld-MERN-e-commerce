@@ -1,0 +1,21 @@
+.product_card{
+    height: 480px;
+    position: relative;
+  }
+  
+  .product_card .center_div{
+    margin-top: 8px;
+    display: flex;  
+      justify-content: center;  
+      align-items: center; 
+  }
+  .product_card .center_div_btn{
+    display: flex;  
+      justify-content: center;  
+      align-items: center; 
+  }
+  .product_card .div_btn{
+       opacity: 1;
+    position: absolute;
+    bottom: 2;
+  }
