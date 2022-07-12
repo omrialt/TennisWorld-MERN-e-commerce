@@ -21,6 +21,9 @@ import {
   PRODUCT_TOP_FAIL,
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
+  PRODUCT_SIMILAR_FAIL,
+  PRODUCT_SIMILAR_REQUEST,
+  PRODUCT_SIMILAR_SUCCESS,
 } from "./productConstants";
 
 export const listProducts =
@@ -201,6 +204,26 @@ export const listTopProducts = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: PRODUCT_TOP_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
+};
+export const listSimilarProducts = (category, brand) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_SIMILAR_REQUEST });
+    const { data } = await axios.get(
+      `/api/products/similar/?category=${category}&brand=${brand}`
+    );
+    dispatch({
+      type: PRODUCT_SIMILAR_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PRODUCT_SIMILAR_FAIL,
       payload:
         err.response && err.response.data.message
           ? err.response.data.message

@@ -15,16 +15,19 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Rating from "../components/Rating";
+import Product from "../components/Product";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   listProductDetails,
   createProductReview,
+  listSimilarProducts,
 } from "../store/Products/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../store/Products/productConstants";
 import { addToWishList, addToCart } from "../store/Cart/CartActions";
+
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -40,8 +43,17 @@ const ProductScreen = () => {
 
   //create product review
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
-  const { error: errorProudctReview, success: successProductReview } =
+  const { error: errorProductReview, success: successProductReview } =
     productReviewCreate;
+
+  //get similar products
+  const productSimilar = useSelector((state) => state.productSimilar);
+
+  const {
+    loading: loadingSimilar,
+    error: errorSimilar,
+    products: productsSimilarList,
+  } = productSimilar;
 
   //get user login info
   const userLogin = useSelector((state) => state.userLogin);
@@ -81,9 +93,7 @@ const ProductScreen = () => {
       })
     );
   };
-
-  console.log(product);
-
+  console.log(productsSimilarList);
   useEffect(() => {
     document.title = `${product.name}`;
     if (successProductReview) {
@@ -93,7 +103,15 @@ const ProductScreen = () => {
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
     dispatch(listProductDetails(id));
-  }, [dispatch, id, successProductReview, product.name]);
+    dispatch(listSimilarProducts(product.category, product.brand));
+  }, [
+    dispatch,
+    id,
+    successProductReview,
+    product.name,
+    product.category,
+    product.brand,
+  ]);
 
   return (
     <Fragment>
@@ -288,8 +306,8 @@ const ProductScreen = () => {
 
                 <ListGroupItem>
                   {userInfo && !userInfo.isAdmin && <h2>Write your review:</h2>}
-                  {errorProudctReview && (
-                    <Message variant="danger">{errorProudctReview}</Message>
+                  {errorProductReview && (
+                    <Message variant="danger">{errorProductReview}</Message>
                   )}
                   {userInfo ? (
                     !userInfo.isAdmin && (
@@ -343,3 +361,29 @@ const ProductScreen = () => {
   );
 };
 export default ProductScreen;
+
+/*{loadingSimilar ? (
+            <Loader />
+          ) : errorSimilar ? (
+            <Message variant="red">{errorSimilar}</Message>
+          ) : (
+            <Fragment>
+            <h2>Similar Products:</h2>
+            <Row>
+              {productsSimilarList.categoryList.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+            </Row>
+            <h2>Similar Products:</h2>
+            <Row>
+              {productsSimilarList.categoryList.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+            </Row>
+            </Fragment>
+          )}
+*/

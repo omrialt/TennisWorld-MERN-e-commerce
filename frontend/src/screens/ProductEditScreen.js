@@ -136,14 +136,14 @@ const ProductTryEditScreen = () => {
     valueChangeHandler: dimensionChangeHandler,
     inputBlurHandler: dimensionInputBlurHandler,
     setEnteredValue: setDimensionValueHandler,
-  } = UseValid((value) => value.trim().length >= 3);
+  } = UseValid((value) => value.length >= 3);
   const {
     value: enteredThickness,
     hasError: thicknessInputHasError,
     valueChangeHandler: thicknessChangeHandler,
     inputBlurHandler: thicknessInputBlurHandler,
     setEnteredValue: setThicknessValueHandler,
-  } = UseValid((value) => value.trim().length >= 3);
+  } = UseValid((value) => value.length >= 3);
 
   const nameInputClasses = nameInputHasError ? "invalid" : "";
   const priceInputClasses = priceInputHasError ? "invalid" : "";

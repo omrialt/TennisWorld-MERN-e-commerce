@@ -154,6 +154,28 @@ const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(3);
   res.json(products);
 });
+//action-get similar products
+//method-GET
+//route-/api/products/similar
+//access-any
+const getSimilarProducts = asyncHandler(async (req, res) => {
+  const { category, brand } = req.query;
+
+  const productsCategory = await Product.find({ category: category });
+
+  const productsBrand = await Product.find({ brand: brand });
+
+  const randomOrderCategory = await productsCategory.sort(
+    (a, b) => 0.5 - Math.random()
+  );
+  const randomOrderBrand = await productsBrand.sort(
+    (a, b) => 0.5 - Math.random()
+  );
+  res.json({
+    categoryList: randomOrderCategory.slice(0, 3),
+    brandList: randomOrderBrand.slice(0, 3),
+  });
+});
 export {
   getProducts,
   getProductById,
@@ -162,4 +184,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProducts,
+  getSimilarProducts,
 };

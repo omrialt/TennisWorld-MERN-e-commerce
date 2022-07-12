@@ -1,17 +1,7 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  Button,
-  Row,
-  Col,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  Table,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Row, Col, Table, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -22,6 +12,7 @@ import { removeFromWishList } from "../store/Cart/CartActions";
 import { USER_UPDATE_PROFILE_RESET } from "../store/Users/userConstants";
 import UseValid from "../hooks/use-valid";
 import { validateEmail } from "../hooks/use-valid";
+import Input from "../utils/Input";
 const ProfileScreen = () => {
   const [message, setMessage] = useState(null);
   const [orderList, setOrderList] = useState([]);
@@ -35,6 +26,7 @@ const ProfileScreen = () => {
     isValid: enteredEmailIsValid,
     inputBlurHandler: emailInputBlurHandler,
     reset: resetEmailValue,
+    setEnteredValue: setEmailValueHandler,
   } = UseValid((value) => validateEmail(value));
   const {
     value: enteredPassword,
@@ -59,6 +51,7 @@ const ProfileScreen = () => {
     isValid: enteredNameIsValid,
     inputBlurHandler: nameInputBlurHandler,
     reset: resetNameValue,
+    setEnteredValue: setNameValueHandler,
   } = UseValid((value) => value.trim().length > 3);
 
   //get user details
@@ -130,11 +123,16 @@ const ProfileScreen = () => {
   ) {
     isValid = true;
   }
+  console.log(userInfo);
 
   useEffect(() => {
     document.title = "Proshop|My Profile";
     if (!userInfo) {
       navigate("/login");
+    }
+    if (userInfo) {
+      setNameValueHandler(userInfo.name);
+      setEmailValueHandler(userInfo.email);
     } else {
       if (!user || !user.name || success) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
@@ -144,7 +142,16 @@ const ProfileScreen = () => {
         setOrderList([]);
       }
     }
-  }, [dispatch, navigate, userInfo, user, success, orders]);
+  }, [
+    dispatch,
+    navigate,
+    userInfo,
+    user,
+    success,
+    orders,
+    setNameValueHandler,
+    setEmailValueHandler,
+  ]);
 
   return (
     <Row>
@@ -155,64 +162,51 @@ const ProfileScreen = () => {
         {success && <Message variant="success">Profile updated!</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
-          <FormGroup className={nameInputClasses} controlId="name">
-            <FormLabel>Name</FormLabel>
-            <FormControl
-              type="text"
-              placeholder={userInfo.name}
-              value={enteredName}
-              onInput={nameChangeHandler}
-              onBlur={nameInputBlurHandler}
-            ></FormControl>
-          </FormGroup>
-          {nameInputHasError && (
-            <p className="error-text">Name must be at least 3 characters</p>
-          )}
-          <FormGroup className={emailInputClasses} controlId="email">
-            <FormLabel>Email</FormLabel>
-            <FormControl
-              type="email"
-              placeholder={userInfo.email}
-              value={enteredEmail}
-              onInput={emailChangeHandler}
-              onBlur={emailInputBlurHandler}
-            ></FormControl>
-          </FormGroup>
-          {emailInputHasError && (
-            <p className="error-text">Please enter valid email</p>
-          )}
-          <FormGroup
+          <Input
+            className={nameInputClasses}
+            controlId="name"
+            label="Name"
+            type="text"
+            value={enteredName}
+            onInputFn={nameChangeHandler}
+            onBlurFn={nameInputBlurHandler}
+            errorTernary={nameInputHasError}
+            errorText="must be at least 6 characters"
+          />
+          <Input
+            className={emailInputClasses}
+            controlId="email"
+            label="Email"
+            type="email"
+            value={enteredEmail}
+            onInputFn={emailChangeHandler}
+            onBlurFn={emailInputBlurHandler}
+            errorTernary={emailInputHasError}
+            errorText="is not valid"
+          />
+          <Input
             className={passwordInputClasses}
-            controlId="passwordConfirm"
-          >
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              type="password"
-              placeholder="password"
-              value={enteredPassword}
-              onInput={passwordChangeHandler}
-              onBlur={passwordInputBlurHandler}
-            ></FormControl>
-          </FormGroup>
-          {passwordInputHasError && (
-            <p className="error-text">Password must be at least 6 characters</p>
-          )}
-          <FormGroup
-            className={passwordConfirmInputClasses}
             controlId="password"
-          >
-            <FormLabel>Confirm Password</FormLabel>
-            <FormControl
-              type="password"
-              placeholder="confirm password"
-              value={enteredPasswordConfirm}
-              onInput={passwordConfirmChangeHandler}
-              onBlur={passwordConfirmInputBlurHandler}
-            ></FormControl>
-          </FormGroup>
-          {passwordConfirmInputHasError && (
-            <p className="error-text">Password must be at least 6 characters</p>
-          )}
+            label="Password"
+            type="password"
+            value={enteredPassword}
+            onInputFn={passwordChangeHandler}
+            onBlurFn={passwordInputBlurHandler}
+            errorTernary={passwordInputHasError}
+            errorText="must be at least 6 characters"
+          />
+          <Input
+            className={passwordConfirmInputClasses}
+            controlId="passwordConfirm"
+            label="Confirm Password"
+            type="password"
+            value={enteredPasswordConfirm}
+            onInputFn={passwordConfirmChangeHandler}
+            onBlurFn={passwordConfirmInputBlurHandler}
+            errorTernary={passwordConfirmInputHasError}
+            errorText="must be at least 6 characters"
+          />
+
           <Button
             disabled={!isValid}
             className="my-3"

@@ -3,6 +3,7 @@ import ShopContext from "../store/shop-context";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Container } from "react-bootstrap";
+import SideBarMenu from "react-bootstrap-sidebar-menu";
 
 const Layout = (props) => {
   const shopCtx = useContext(ShopContext);
