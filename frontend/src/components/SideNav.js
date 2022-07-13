@@ -1,190 +1,256 @@
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const SideNav = () => {
   return (
     <div
-      className="flex-shrink-0 p-3 bg-dark text-white
+      className="flex-shrink-0 pt-5 px-3 mt-3  bg-white
      
       "
       style={{ height: "100%", width: "10vw" }}
     >
       <ul className="list-unstyled ps-0">
-        <li className="mb-1 ">
+        <li className="mb-1">
           <button
-            className="btn text-white btn-toggle align-items-center rounded collapsed"
+            className="btn text-dark btn-toggle align-items-center rounded collapsed"
             data-bs-toggle="collapse"
-            data-bs-target="#home-collapse"
+            data-bs-target="#racket-collapse"
             aria-expanded="false"
           >
-            Home
+            Rackets
           </button>
-          <div className="collapse" id="home-collapse">
+          <div className="collapse" id="racket-collapse">
             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li className="text-white">
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Overview
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/wilson/rackets`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Wilson
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Updates
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/babolat/rackets`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Babolat
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Reports
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/head/rackets`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Head
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/prince/rackets`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Prince
+                </Link>
               </li>
             </ul>
           </div>
         </li>
         <li className="mb-1">
           <button
-            className="btn text-white btn-toggle align-items-center rounded collapsed"
+            className="btn text-dark btn-toggle align-items-center rounded collapsed"
             data-bs-toggle="collapse"
-            data-bs-target="#dashboard-collapse"
+            data-bs-target="#string-collapse"
             aria-expanded="false"
           >
-            Dashboard
+            Strings
           </button>
-          <div className="collapse" id="dashboard-collapse">
+          <div className="collapse" id="string-collapse">
             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Overview
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/wilson/strings`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Wilson
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Weekly
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/babolat/strings`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Babolat
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Monthly
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/head/strings`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Head
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Annually
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/prince/strings`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Prince
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/luxilon/strings`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Luxilon
+                </Link>
               </li>
             </ul>
           </div>
         </li>
         <li className="mb-1">
           <button
-            className="btn text-white btn-toggle align-items-center rounded collapsed"
+            className="btn text-dark btn-toggle align-items-center rounded collapsed"
             data-bs-toggle="collapse"
-            data-bs-target="#orders-collapse"
+            data-bs-target="#bags-collapse"
             aria-expanded="false"
           >
-            Orders
+            Bags
           </button>
-          <div className="collapse" id="orders-collapse">
+          <div className="collapse" id="bags-collapse">
             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  New
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/wilson/bags`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Wilson
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Processed
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/babolat/bags`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Babolat
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Shipped
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/head/bags`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Head
+                </Link>
               </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Returned
-                </a>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/prince/bags`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Prince
+                </Link>
               </li>
             </ul>
           </div>
         </li>
+        <li className="mb-1">
+          <button
+            className="btn text-dark btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#grip-collapse"
+            aria-expanded="false"
+          >
+            Grips
+          </button>
+          <div className="collapse" id="grip-collapse">
+            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/wilson/grips`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Wilson
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/babolat/grips`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Babolat
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/head/grips`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Head
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/prince/grips`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Prince
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li className="mb-1">
+          <button
+            className="btn text-dark btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#balls-collapse"
+            aria-expanded="false"
+          >
+            Balls
+          </button>
+          <div className="collapse" id="balls-collapse">
+            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/wilson/balls`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Wilson
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/babolat/balls`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Babolat
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/penn/balls`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Penn
+                </Link>
+              </li>
+              <li className="py-1 px-4">
+                <Link
+                  to={`/choose/dunlop/balls`}
+                  className="link-white rounded text-decoration-none"
+                >
+                  Dunlop
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <li className="border-top my-3"></li>
-        <li className="mb-1">
-          <button
-            className="btn text-white btn-toggle align-items-center rounded collapsed"
-            data-bs-toggle="collapse"
-            data-bs-target="#account-collapse"
-            aria-expanded="false"
-          >
-            Account
-          </button>
-          <div className="collapse" id="account-collapse">
-            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  New...
-                </a>
-              </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a href="#" className="link-white rounded text-decoration-none">
-                  Sign out
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
       </ul>
     </div>
   );
 };
 export default SideNav;
-<div className="sidenav" style={{ height: "100%", width: "10vw" }}>
-  <ul className="nav flex-column pt-3 bg-dark h-100">
-    <li>
-      <li class="mt-1 text-nowrap">
-        <a href="#" class="nav-link text-white" routerLinkActive="active">
-          <i className="bi bi-person"></i>
-          <span className=" ms-3">Hey</span>
-        </a>
-      </li>
-    </li>
-    <li>
-      <li class="mt-1 text-nowrap">
-        <a href="#" class="nav-link text-white" routerLinkActive="active">
-          <i className="bi bi-person"></i>
-          <span className=" ms-3">Hey</span>
-        </a>
-      </li>
-    </li>
-    <li>
-      <li class="mt-1 text-nowrap">
-        <a href="#" class="nav-link text-white" routerLinkActive="active">
-          <i className="bi bi-person"></i>
-          <span className=" ms-3">Hey</span>
-        </a>
-      </li>
-    </li>
-    <li>
-      <li class="mt-1 text-nowrap">
-        <a href="#" class="nav-link text-white" routerLinkActive="active">
-          <i className="bi bi-person"></i>
-          <span className=" ms-3">Hey</span>
-        </a>
-      </li>
-    </li>
-    <li>
-      <li class="mt-1 text-nowrap">
-        <a href="#" class="nav-link text-white" routerLinkActive="active">
-          <i className="bi bi-person"></i>
-          <span className=" ms-3">Hey</span>
-        </a>
-      </li>
-    </li>
-  </ul>
-</div>;

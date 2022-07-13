@@ -381,11 +381,15 @@ const ProductScreen = () => {
 
           <h2>Other From {product.brand}:</h2>
           <Row>
-            {productsList.brandList.map((prod) => (
-              <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
-                <ProductInScreen product={prod} />
-              </Col>
-            ))}
+            {productsList.brandList.length > 0 ? (
+              productsList.brandList.map((prod) => (
+                <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
+                  <ProductInScreen product={prod} />
+                </Col>
+              ))
+            ) : (
+              <Message variant="danger">No Products Found!</Message>
+            )}
           </Row>
         </Fragment>
       )}
@@ -393,46 +397,3 @@ const ProductScreen = () => {
   );
 };
 export default ProductScreen;
-
-/*{loadingSimilar ? (
-            <Loader />
-          ) : errorSimilar ? (
-            <Message variant="red">{errorSimilar}</Message>
-          ) : (
-            <Fragment>
-            <h2>Similar Products:</h2>
-            <Row>
-              {productsSimilarList.categoryList.map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-            </Row>
-            <h2>Similar Products:</h2>
-            <Row>
-              {productsSimilarList.categoryList.map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-            </Row>
-            </Fragment>
-          )}
-*/
-/*{loadingSimilar ? (
-            <Loader />
-          ) : errorSimilar ? (
-            <Message variant="red">{errorSimilar}</Message>
-          ) : (
-            <Fragment>
-            <h2>Similar Products:</h2>
-            <Row>
-              {productsSimilarList.categoryList.map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-            </Row>
-            </Fragment>
-          )}
-*/

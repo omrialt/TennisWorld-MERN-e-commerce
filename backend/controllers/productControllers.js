@@ -1,12 +1,12 @@
 import Product from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
-import mongoose from "mongoose";
+
 //action-get all products
 //method-GET
 //route-/api/products
 //access-any
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 8;
+  const pageSize = 16;
   const page = +req.query.pageNumber || 1;
 
   const count = await Product.count();
@@ -160,7 +160,6 @@ const getTopProducts = asyncHandler(async (req, res) => {
 //access-any
 const getSimilarProducts = asyncHandler(async (req, res) => {
   const { category, brand, id } = req.query;
-  console.log(id);
 
   const product = await Product.findById(id);
 
@@ -186,6 +185,20 @@ const getSimilarProducts = asyncHandler(async (req, res) => {
     brandList: randomOrderBrand.slice(0, 3),
   });
 });
+//action-get products by brand/category
+//method-GET
+//route-/api/products/choose
+//access-any
+const getProductsBrandCategory = asyncHandler(async (req, res) => {
+  const { category, brand } = req.query;
+  const products = await Product.find({ brand: brand, category: category });
+  console.log(products);
+  if (!products) {
+    res.status(404).json({ message: "Products not found!" });
+  } else {
+    res.json(products);
+  }
+});
 export {
   getProducts,
   getProductById,
@@ -195,4 +208,5 @@ export {
   createProductReview,
   getTopProducts,
   getSimilarProducts,
+  getProductsBrandCategory,
 };

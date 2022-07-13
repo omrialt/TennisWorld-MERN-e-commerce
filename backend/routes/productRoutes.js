@@ -9,6 +9,7 @@ import {
   createProductReview,
   getTopProducts,
   getSimilarProducts,
+  getProductsBrandCategory,
 } from "../controllers/productControllers.js";
 import { admin, protect } from "../middlewares/authMiddleware.js";
 
@@ -16,6 +17,7 @@ productRouter.route("/").get(getProducts).post(protect, admin, createProduct);
 productRouter.route("/:id/reviews").post(protect, createProductReview);
 productRouter.get("/top", getTopProducts);
 productRouter.get("/similar", getSimilarProducts);
+productRouter.get("/choose", getProductsBrandCategory);
 
 productRouter
   .route("/:id")

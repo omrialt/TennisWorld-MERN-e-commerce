@@ -20,6 +20,7 @@ import NotFound from "./screens/NotFoundScreen";
 import ArticleScreen from "./screens/ArticleScreen";
 import ArticleListScreen from "./screens/ArticleListScreen";
 import ArticleEditScreen from "./screens/ArticleEditScreen";
+import BrandCategoryScreen from "./screens/BrandCaregoryScreen";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
         <Route path="/page/:pageNumber" element={<HomeScreen />} />
         <Route path="/magazine/:id" element={<ArticleScreen />} />
         <Route path="/magazine" element={<MagazineScreen />} />
+        <Route
+          path="/choose/:brand/:category"
+          element={<BrandCategoryScreen />}
+        />
         <Route path="/" element={<HomeScreen />} />
       </Routes>
     </Layout>

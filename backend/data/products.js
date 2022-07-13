@@ -3,7 +3,8 @@ import path from "path";
 const products = [
   {
     name: "Babolat Pure Aero Racket",
-    image: "https://img.tennis-warehouse.com/cache/120/BPAR-thumb.jpg",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=BPAR-1.jpg&nw=540",
     description:
       "Specializing in spin and power, the Babolat Pure Aero is one of the game's most legendary racquets. At 11.2 ounces strung, this stick is ideal for hard charging intermediate players, but it should also work very well for the advanced ball striker who is looking to go on offense.  For this update, Babolat lowers the flex a tad, giving this notoriously stiff stick a slightly more controlled and arm-friendly response. Babolat has also moved the Cortex dampening material to the head at 3 & 9 o'clock, resulting in a slightly softer feel at impact. But make no mistake: this is still a firm, modern and lively weapon. The signature technology,  called FSI Spin, utilizes wider string spacing for extra bite along with oblong grommets at 6 and 12 o'clock to maximize string movement and snapback. Like the player who endorses this racquet (Rafael Nadal), the Pure Aero feels fast and explosive from the baseline. The speedy response and grippy stringbed provide the recipe for hitting heavy spin-loaded balls that drop hard, and the higher trajectory response makes it easy to keep the ball deep. The mid 320 swingweight draws a nice compromise between speed and stability, and the quick handling makes this a great stick for those who like chasing down balls or ripping winners on the run. At net the Pure Aero plays great on fast exchanges, and there is enough power to finish points with a bang. Ultimately, The Pure Aero remains a very obvious choice for aggressive baseliners looking to control the action with pace and spin.",
     length: "27in / 68.58cm",
@@ -305,7 +306,7 @@ const products = [
     numReviews: 10,
   },
   {
-    name: "Prince Ripstick 100 280g",
+    name: "Prince Ripstick 100 280g Racket",
     image:
       "https://img.tennis-warehouse.com/watermark/rs.php?path=PRIPSL-1.jpg&nw=540",
     description:
@@ -594,7 +595,7 @@ const products = [
       "Multifilament - 1,300 filaments bonded with a flexible PU resin, with a low-friction additive in the coating",
     color: "Grey",
     brand: "Head",
-    category: "Natural",
+    category: "Strings",
     price: 14.99,
     countInStock: 20,
     rating: 5,
@@ -788,10 +789,58 @@ const products = [
     suitableFor: 6,
     brand: "Head",
     category: "Bags",
-    price: 79.99,
+    price: 129.99,
     countInStock: 5,
     rating: 4.5,
     numReviews: 4,
+  },
+  {
+    name: "Prince Tour Backpack Duffelpack Bag Black/Green",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PTRBAGSBP-1.jpg&nw=540",
+    description:
+      "You've never seen a backpack like this before! Prince invigorates their bag line by adding the Tour Duffelpack Backpack into their lineup. Ideal for the player on the go, it features a large main compartment for your gear while there is a padded back compartment to hold up to 2 racquets. Then behind that, there's another compartment perfect to carry a laptop, tablet or even more gear. The sides of this bag have a long zippered compartment with several internal organizational pockets and then there are mesh pockets on the exterior to hold water bottles or cans of balls. The top of the bag has a felt lined compartment for your valuables while the bottom has a vented compartment ideal for shoes or sweaty gear. The perfect size for a carryon bag it will also lay like a duffle bag when not being carried. Also, there are durable backpack straps as well as strategically placed grab handles making this an easy bag to tote around on a daily basis.",
+    dimension: "21 x 13 x 10",
+    color: "Black / Green",
+    suitableFor: 3,
+    brand: "Prince",
+    category: "Bags",
+    price: 79.99,
+    countInStock: 20,
+    rating: 4,
+    numReviews: 2,
+  },
+  {
+    name: "Prince Tour Future 6 Pack Bag Black/Green",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PTRBAGS6-1.jpg&nw=540",
+    description:
+      "The Prince Tour 6 Pack keeps it simple with all the basic features any tennis player will appreciate. With 2 large main compartments, this bag can hold up to 6 racquets along with other gear. Both sides of the bag feature large accessory pockets to keep your smaller items organized. It has a grab handle on the end and on the top, along with adjustable, removable padded backpack straps.",
+    dimension: "30 x 9 x 14",
+    color: "Black / Green",
+    suitableFor: 6,
+    brand: "Prince",
+    category: "Bags",
+    price: 79.99,
+    countInStock: 30,
+    rating: 4,
+    numReviews: 5,
+  },
+  {
+    name: "Prince Tour 9 Pack Bag Black/Green",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PTRBAGS12-1.jpg&nw=540",
+    description:
+      "Designed for the serious player, the Prince Tour 9 pack is loaded with features any player will revel in. This bag features three large main zippered compartments, one of which has thermal protected lining, allowing competitors to carry up to 12 racquets in total. There are duel, molded, large front accessory pockets to keep your extra items organized including reels of string, grips, etc. One end features a vented shoe pocket while the other end has a zippered thermal protected pocket ideal for keeping your beverages and/or snacks cool. This bag has a grab handle on the end and on the top, along with an adjustable, removable padded shoulder strap or it can be carried as a backpack with the plush, adjustable, padded backpack straps that are intended to ease shock.",
+    dimension: "30 x 9 x 14",
+    color: "Black / Green",
+    suitableFor: 9,
+    brand: "Prince",
+    category: "Bags",
+    price: 99.99,
+    countInStock: 14,
+    rating: 5,
+    numReviews: 20,
   },
   {
     name: "Babolat Tour Original Overgrip",
@@ -799,7 +848,7 @@ const products = [
       "https://img.tennis-warehouse.com/watermark/rs.php?path=BTOOVE3-BK-1.jpg&nw=210",
     description:
       "The Tour Original overgrip provides a dry feel, with a silky texture. This overgrip puts a premium on comfort, and will absorb sweat very well. This overgrip is thicker, and has a slightly more cushioned feel compared to the Babolat VS Original, and Pro Response overgrips.",
-    color: "Black, Blue, White",
+    color: "Black",
     thickness: `0.02" / 0.55 mm`,
     brand: "Babolat",
     category: "Grips",
@@ -809,18 +858,258 @@ const products = [
     numReviews: 5,
   },
   {
-    name: "Babolat Tour Original Overgrip",
+    name: "Babolat Pro Response Overgrip",
     image:
-      "https://img.tennis-warehouse.com/watermark/rs.php?path=BTOOVE3-BK-1.jpg&nw=210",
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=BPROROG-BK-1.jpg&nw=540",
     description:
-      "Penn's longest lasting tennis ball, the Pro Penn Marathon is the #1 choice among USPTA Teaching Professionals. These feature Penn's Encore technology for more longevity in the core and LongPlay felt for better durability. Optik felt keeps visibility at a maximum. These particular Pro Penn Marathon balls are made of extra-duty felt, perfect for hard court play.",
-
-    brand: "Penn",
-    category: "Balls",
-    price: 5.99,
-    countInStock: 46,
+      "The Babolat Pro Response Overgrip offers a very thin feel with plenty of tack, while still being absorbent. Used on tour by players who like a tackier feel compared to the VS Original Overgrip, and like it nice and thin, so that it won't add much size to your grip.",
+    color: "Black",
+    thickness: `0.45 mm`,
+    brand: "Babolat",
+    category: "Grips",
+    price: 7.99,
+    countInStock: 30,
+    rating: 4,
+    numReviews: 5,
+  },
+  {
+    name: "Babolat VS Overgrips 12-pack White",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=BPROROG-BK-1.jpg&nw=540",
+    description:
+      "Babolat's VS Original Overgrip is one of the thinnest overgrips available. It offers a smooth, non-inhibiting surface, and a two week TW playtest showed good durability. This comfortable, soft feeling, easy to wrap overgrip is popular with both ATP and WTA players. It fits standard and extra long racquets.",
+    color: "White",
+    thickness: `0.40 mm`,
+    brand: "Babolat",
+    category: "Grips",
+    price: 21.99,
+    countInStock: 65,
     rating: 5,
     numReviews: 5,
+  },
+  {
+    name: "Wilson Pro Overgrip Sensation",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PROGS-BK-1.jpg&nw=540",
+    description:
+      "One of the most popular overgrips worldwide for its tack and sustainability, Pro Overgrip now comes in a thinner version. At 25% thinner, according to Wilson, Pro Overgrip Sensation offers the ultimate in feel while providing excellent tack.",
+    color: "Black",
+    thickness: `0.40 mm`,
+    brand: "Wilson",
+    category: "Grips",
+    price: 6.99,
+    countInStock: 80,
+    rating: 5,
+    numReviews: 12,
+  },
+  {
+    name: "Wilson Pro Overgrip Sensation 12 Pack",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PROGS12-WH-1.jpg&nw=1080",
+    description:
+      "One of the most popular overgrips worldwide for its tack and sustainability, Pro Overgrip now comes in a thinner version. At 25% thinner, according to Wilson, Pro Overgrip Sensation offers the ultimate in feel while providing excellent tack.",
+    color: "Black",
+    thickness: `0.40 mm`,
+    brand: "Wilson",
+    category: "Grips",
+    price: 20.99,
+    countInStock: 40,
+    rating: 4,
+    numReviews: 14,
+  },
+  {
+    name: "Head Super Comp Overgrips 3 Pack",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=HSCOG-BL-1.jpg&nw=1080",
+    description:
+      "This Head Super Comp Overgrip is a great choice for the player looking for moisture absorption. We found a nice soft feel from this grip with good absorbency.",
+    color: "Blue",
+    thickness: `0.40 mm`,
+    brand: "Head",
+    category: "Grips",
+    price: 5.99,
+    countInStock: 50,
+    rating: 5,
+    numReviews: 22,
+  },
+  {
+    name: "Head Prestige Pro Overgrips",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=HPPOG-WH-1.jpg&nw=540",
+    description:
+      "The Head Prestige Pro Overgrips are a great choice for the player looking for a tacky feel. We found a nice soft feel from this grip with excellent grip. Comes three to a pack.",
+    color: "White",
+    thickness: `0.40 mm`,
+    brand: "Head",
+    category: "Grips",
+    price: 6.99,
+    countInStock: 50,
+    rating: 5,
+    numReviews: 22,
+  },
+  {
+    name: "Head Prime Tour Overgrip 50 Pack",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=HPTR50-BK-1.jpg&nw=1080",
+    description:
+      "This Head Prime Tour grip is a great choice for the player looking for moisture absorption. We found a nice tacky feel from this grip with good absorbency.",
+    color: "Black",
+    thickness: `0.40 mm`,
+    brand: "Head",
+    category: "Grips",
+    price: 55.99,
+    countInStock: 60,
+    rating: 5,
+    numReviews: 8,
+  },
+  {
+    name: "Prince DuraPro+ 3 Pack Overgrip",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PDPP3PO-RD-1.jpg&nw=1080",
+    description:
+      "The Prince DuraPro+ Overgrip has an improved, durable high tack formula with a microfiber core for added comfort and absorption.",
+    color: "Red",
+    thickness: `0.40 mm`,
+    brand: "Prince",
+    category: "Grips",
+    price: 3.99,
+    countInStock: 112,
+    rating: 3.5,
+    numReviews: 10,
+  },
+  {
+    name: "Prince Dura Tred+ Overgrip Black",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PDTOGBK-1.jpg&nw=540",
+    description:
+      "The Prince DuraTred+ Overgrip offers a deep tread pattern, grooved for better traction while having a tacky feel.",
+    color: "Black",
+    thickness: `0.40 mm`,
+    brand: "Prince",
+    category: "Grips",
+    price: 3.99,
+    countInStock: 15,
+    rating: 3.5,
+    numReviews: 18,
+  },
+  {
+    name: "Prince ResiPro 12 Pack Overgrip White",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PRP12O-1.jpg&nw=540",
+    description:
+      "The Prince ResiPro Overgrip offers a dry, textured feel. There is plenty of traction with a low tack feel.",
+    color: "White",
+    thickness: `0.40 mm`,
+    brand: "Prince",
+    category: "Grips",
+    price: 14.99,
+    countInStock: 28,
+    rating: 3.5,
+    numReviews: 28,
+  },
+  {
+    name: "Pro Penn Marathon Extra Duty Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PPMXD-1.jpg&nw=540",
+    description:
+      "Penn's longest lasting tennis ball, the Pro Penn Marathon is the #1 choice among USPTA Teaching Professionals. These feature Penn's Encore technology for more longevity in the core and LongPlay felt for better durability. Optik felt keeps visibility at a maximum. These particular Pro Penn Marathon balls are made of extra-duty felt, perfect for hard court play.24 cans per case,3 balls per can",
+    brand: "Penn",
+    category: "Balls",
+    price: 94.99,
+    countInStock: 38,
+    rating: 3.5,
+    numReviews: 28,
+  },
+  {
+    name: "Penn Tour Extra Duty Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=TOUXDC-1.jpg&nw=540",
+    description:
+      "Penn Tour tennis balls are a premium tennis ball used in 4 of the 5 largest tournaments in North America. The Tour balls feature LongPlay felt for great durability and Smart Optik felt treatment for high visibility on court. Smart Optik felt is 19% more visible than a standard tennis ball. Approved for ITF and USTA tournaments. Perfect for hard court surfaces..24 cans per case,3 balls per can",
+    brand: "Penn",
+    category: "Balls",
+    price: 84.99,
+    countInStock: 112,
+    rating: 5,
+    numReviews: 30,
+  },
+  {
+    name: "Penn Championship Extra Duty Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=PCHAMPXD-1.jpg&nw=540",
+    description:
+      "America's number one selling ball, the Penn Championship offers impressive playability and consistency. With its extra durable felt, this ball is ideal for hard court, outdoor, asphalt and concrete play. Total of 24 cans of balls per case, Three balls per can.",
+    brand: "Penn",
+    category: "Balls",
+    price: 69.99,
+    countInStock: 200,
+    rating: 5,
+    numReviews: 50,
+  },
+  {
+    name: "Wilson US Open XD Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=WUSOXD4-1.jpg&nw=540",
+    description:
+      "For the past 40+ years, every point at the US Open has been played with a Wilson US Open tennis ball. Crafted with a premium woven felt, the Wilson US Open Extra Duty ball is ideal for play on hard, abrasive courts thanks to its excellent durability.18 cans per case,4 balls per can",
+    brand: "Wilson",
+    category: "Balls",
+    price: 119.99,
+    countInStock: 74,
+    rating: 5,
+    numReviews: 42,
+  },
+  {
+    name: "Wilson Triniti Pro Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=WTRINPRO4-1.jpg&nw=540",
+    description:
+      "Continuing to provide a high quality sustainable ball, Wilson adds to the collection with the addition of the Triniti Pro Balls. Designed with fully sustainable packaging, this will be the most premium ball in the Triniti line and it will feel a bit livelier for competitive situations as it features premium woven felt for a consistent bounce while the ball will feel fresh for hours of use thanks to the Engage Core of integrated plastomer material.  While there will not be the familiar pop sound as a traditional ball can, the unique octagonal container, called a sleeve, is 100% recyclable after use. A better ball for the planet.18 cans per case,4 balls per can",
+    brand: "Wilson",
+    category: "Balls",
+    price: 139.99,
+    countInStock: 42,
+    rating: 5,
+    numReviews: 16,
+  },
+  {
+    name: "Dunlop ATP Championship XD Tennis Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=DATPCHXDR-1.jpg&nw=540",
+    description:
+      "The Dunlop ATP Championship Extra Duty tennis ball is officially endorsed by the ATP Tour! The Extra Duty ball is perfect for club and recreational players. The Max Core and Durafelt HD Cloth technologies provide maximum durability suitable for play on all court surfaces.",
+    brand: "Dunlop",
+    category: "Balls",
+    price: 4.99,
+    countInStock: 80,
+    rating: 5,
+    numReviews: 14,
+  },
+  {
+    name: "Dunlop ATP Championship XD Tennis 24 Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=DCHXD-1.jpg&nw=540",
+    description:
+      "The Dunlop ATP Championship Extra Duty tennis ball is officially endorsed by the ATP Tour! The Extra Duty ball is perfect for club and recreational players. The Max Core and Durafelt HD Cloth technologies provide maximum durability suitable for play on all court surfaces.Total of 24 cans of balls per case, Three balls per can.",
+    brand: "Dunlop",
+    category: "Balls",
+    price: 74.99,
+    countInStock: 60,
+    rating: 5,
+    numReviews: 14,
+  },
+  {
+    name: "Babolat Gold All Court Balls",
+    image:
+      "https://img.tennis-warehouse.com/watermark/rs.php?path=BGACBC-1.jpg&nw=540",
+    description:
+      "Babolat's Gold All Court ball combines excellent feel and durability for all court surfaces. This is a great ball for players looking for consistent performance throughout their toughest matches.Total of 24 cans of balls per case, Three balls per can.",
+    brand: "Babolat",
+    category: "Balls",
+    price: 83.99,
+    countInStock: 14,
+    rating: 5,
+    numReviews: 20,
   },
 ];
 

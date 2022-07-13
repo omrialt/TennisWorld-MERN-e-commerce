@@ -22,7 +22,7 @@ import { PRODUCT_UPDATE_RESET } from "../store/Products/productConstants";
 import UseValid from "../hooks/use-valid";
 import Input from "../utils/Input";
 
-const ProductTryEditScreen = () => {
+const ProductEditScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState("");
@@ -165,7 +165,7 @@ const ProductTryEditScreen = () => {
   const categoryHandler = (value) => {
     setProductCategory(value);
   };
-  console.log(productCategory);
+
   const productDetail = useSelector((state) => state.productDetail);
   const { loading, error, product } = productDetail;
 
@@ -318,9 +318,11 @@ const ProductTryEditScreen = () => {
           setGaugeValueHandler(product.gauge);
         }
         if (product.category === "Grips") {
+          setColorValueHandler(product.color);
           setThicknessValueHandler(product.thickness);
         }
         if (product.category === "Bags") {
+          setColorValueHandler(product.color);
           setDimensionValueHandler(product.dimension);
           setSuitableForValueHandler(product.suitableFor);
         }
@@ -350,6 +352,18 @@ const ProductTryEditScreen = () => {
     setSuitableForValueHandler,
   ]);
 
+  let isDisabled = true;
+
+  if (
+    !nameInputHasError &&
+    !priceInputHasError &&
+    !countInStockInputHasError &&
+    !brandInputHasError &&
+    !categoryInputHasError &&
+    !descriptionInputHasError
+  ) {
+    isDisabled = false;
+  }
   return (
     <Fragment>
       <Link to="/admin/productlist" className="btn btn-dark my-3">
@@ -374,7 +388,8 @@ const ProductTryEditScreen = () => {
                     aria-label="Default select example"
                     onChange={(e) => categoryHandler(e.target.value)}
                   >
-                    <option value="Balls">Default/Balls</option>
+                    <option value="Balls">Choose..</option>
+                    <option value="Balls">Balls</option>
                     <option value="Rackets">Racket</option>
                     <option value="Strings">String</option>
                     <option value="Bags">Bags</option>
@@ -550,7 +565,7 @@ const ProductTryEditScreen = () => {
                   <Input
                     className={weightInputClasses}
                     controlId="weight"
-                    label="weight"
+                    label="Weight"
                     type="text"
                     value={enteredWeight}
                     onInputFn={weightChangeHandler}
@@ -622,7 +637,12 @@ const ProductTryEditScreen = () => {
                 ""
               )}
 
-              <Button className="my-3" type="submit" variant="primary">
+              <Button
+                disabled={isDisabled}
+                className="my-3"
+                type="submit"
+                variant="primary"
+              >
                 Update
               </Button>
             </Form>
@@ -632,4 +652,4 @@ const ProductTryEditScreen = () => {
     </Fragment>
   );
 };
-export default ProductTryEditScreen;
+export default ProductEditScreen;

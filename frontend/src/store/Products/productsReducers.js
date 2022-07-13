@@ -26,6 +26,9 @@ import {
   PRODUCT_SIMILAR_FAIL,
   PRODUCT_SIMILAR_REQUEST,
   PRODUCT_SIMILAR_SUCCESS,
+  PRODUCT_CHOOSE_FAIL,
+  PRODUCT_CHOOSE_REQUEST,
+  PRODUCT_CHOOSE_SUCCESS,
 } from "./productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -145,6 +148,24 @@ export const productSimilarReducer = (
     case PRODUCT_SIMILAR_SUCCESS:
       return { loading: false, productsList: action.payload };
     case PRODUCT_SIMILAR_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const productsBrandCategoryReducer = (
+  state = { products: [] },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_CHOOSE_REQUEST:
+      return {
+        loading: true,
+        products: [],
+      };
+    case PRODUCT_CHOOSE_SUCCESS:
+      return { loading: false, products: action.payload };
+    case PRODUCT_CHOOSE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
