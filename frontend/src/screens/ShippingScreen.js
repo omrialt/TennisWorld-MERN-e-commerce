@@ -9,7 +9,7 @@ import UseValid from "../hooks/use-valid";
 import Input from "../utils/Input";
 
 const ShippingScreen = () => {
-  document.title = "Proshop|Shipping";
+  document.title = "TennisWorld|Shipping";
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

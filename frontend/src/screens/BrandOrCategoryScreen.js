@@ -4,16 +4,18 @@ import Product from "../components/Product";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listBrandCategoryProducts } from "../store/Products/productActions";
+import { listBrandOrCategoryProducts } from "../store/Products/productActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import brandsArray from "../utils/brands";
 
-const BrandCategoryScreen = () => {
+const BrandOrCategoryScreen = () => {
   const [productList, setProductList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
 
   const { brand, category } = useParams();
+
   const brandUpper = brand[0].toUpperCase() + brand.slice(1);
   const categoryUpper = category[0].toUpperCase() + category.slice(1);
 
@@ -21,11 +23,11 @@ const BrandCategoryScreen = () => {
     (brand) => brand.brand === brandUpper
   )[0];
 
-  const productsBrandCategory = useSelector(
-    (state) => state.productsBrandCategory
+  const productsBrandOrCategory = useSelector(
+    (state) => state.productsBrandOrCategory
   );
 
-  const { loading, error, products } = productsBrandCategory;
+  const { loading, error, products } = productsBrandOrCategory;
 
   const sortHandler = (value) => {
     let sortedList;
@@ -53,29 +55,42 @@ const BrandCategoryScreen = () => {
   };
 
   useEffect(() => {
-    document.title = `${brandUpper} ${categoryUpper}`;
-    dispatch(listBrandCategoryProducts(brandUpper, categoryUpper));
+    if (brandUpper.length === 1) {
+      document.title = categoryUpper;
+      dispatch(listBrandOrCategoryProducts("category", categoryUpper));
+    }
+    if (categoryUpper.length === 1) {
+      document.title = brandUpper;
+      dispatch(listBrandOrCategoryProducts("brand", brandUpper));
+    }
+    if (brandUpper.length === 1 && categoryUpper.length === 1) {
+      setErrorMessage("Invalid request,please try again");
+    }
   }, [brand.length, brandUpper, category.length, categoryUpper, dispatch]);
 
   return loading ? (
     <Loader />
   ) : error ? (
     <Message variant="danger">{error}</Message>
+  ) : errorMessage ? (
+    <Message variant="danger">{errorMessage}</Message>
   ) : (
     <Fragment>
       <Row>
         <Col>
           <h1>
-            {brandUpper} {categoryUpper} Products
+            {brandUpper.length === 1 ? categoryUpper : brandUpper} Products
           </h1>
         </Col>
-        <Col>
-          <img
-            className="brand_img_big"
-            alt={brandBanner.brand}
-            src={brandBanner.banner}
-          />
-        </Col>
+        {brandUpper.length > 1 && (
+          <Col>
+            <img
+              className="brand_img_big"
+              alt={brandBanner.brand}
+              src={brandBanner.banner}
+            />
+          </Col>
+        )}
       </Row>
       <Row>
         <Col md={4}>
@@ -106,4 +121,4 @@ const BrandCategoryScreen = () => {
     </Fragment>
   );
 };
-export default BrandCategoryScreen;
+export default BrandOrCategoryScreen;

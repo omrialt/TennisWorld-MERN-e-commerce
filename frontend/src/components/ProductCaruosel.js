@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Carousel, CarouselItem, Image } from "react-bootstrap";
+import { Carousel, Image } from "react-bootstrap";
+import NumberFormat from "react-number-format";
 import Loader from "./Loader";
 import Message from "./Message";
 import { listTopProducts } from "../store/Products/productActions";
@@ -9,10 +10,8 @@ import { listTopProducts } from "../store/Products/productActions";
 const ProductCarousel = () => {
   const dispatch = useDispatch();
 
-  //top rated product
-  const productTopRated = useSelector((state) => state.productTopRated);
-
-  const { loading, error, products } = productTopRated;
+  const productsTopRated = useSelector((state) => state.productsTopRated);
+  const { loading, error, products } = productsTopRated;
 
   useEffect(() => {
     dispatch(listTopProducts());
@@ -21,22 +20,31 @@ const ProductCarousel = () => {
   return loading ? (
     <Loader />
   ) : error ? (
-    <Message variant="red">{error}</Message>
+    <Message variant="danger">{error}</Message>
   ) : (
-    <Carousel pause="hover" className="bg-dark">
+    <Carousel pause="hover" className="bg-dark mt-2 mx-5">
       {products.map((product) => (
-        <CarouselItem key={product._id}>
+        <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} fluid />
-            <Carousel.Caption className="carousel-caption">
-              <h2>
-                {product.name} (${product.price})
-              </h2>
+            <Image src={product.image} alt={product.name} fluid rounded />
+            <Carousel.Caption className="carousel-caption-sm">
+              <Fragment>
+                <h2>{product.name}</h2>
+                <h5>
+                  <NumberFormat
+                    value={product.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                  />{" "}
+                  $
+                </h5>
+              </Fragment>
             </Carousel.Caption>
           </Link>
-        </CarouselItem>
+        </Carousel.Item>
       ))}
     </Carousel>
   );
 };
+
 export default ProductCarousel;

@@ -2,7 +2,7 @@ import { Fragment, useContext } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Select, { components } from "react-select";
-import ShopContext from "../store/shop-context";
+import ShopContext from "../../store/shop-context";
 
 const SearchBox = () => {
   const shopCtx = useContext(ShopContext);
@@ -11,8 +11,8 @@ const SearchBox = () => {
   const { seeSearchBar: toggleSearchBar, toggleSearchBar: toggleFunction } =
     shopCtx;
 
-  const productsList = useSelector((state) => state.productsList);
-  const { products } = productsList;
+  const productsListAll = useSelector((state) => state.productsListAll);
+  const { products } = productsListAll;
 
   const items = products.map((item) => {
     return {

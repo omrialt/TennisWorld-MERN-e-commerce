@@ -8,7 +8,7 @@ import productRouter from "./routes/productRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 ("./routes/userRoutes");
 import orderRouter from "./routes/orderRoutes.js";
-import articleRouter from "./routes/articleRoutes.js";
+
 import uploadRouter from "./routes/uploadRoutes.js";
 
 dotenv.config();
@@ -26,7 +26,6 @@ app.use(express.json());
 app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
-app.use("/api/magazine", articleRouter);
 app.use("/api/upload", uploadRouter);
 
 app.get("/api/config/paypal", (req, res) =>

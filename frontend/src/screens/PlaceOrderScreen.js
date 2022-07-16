@@ -62,7 +62,7 @@ const PlaceOrderScreen = () => {
   };
 
   useEffect(() => {
-    document.title = "Proshop|Placeorder";
+    document.title = "TennisWorld|Placeorder";
     if (success) {
       navigate(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });

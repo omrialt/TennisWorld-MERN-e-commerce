@@ -19,3 +19,23 @@
     position: absolute;
     bottom: 2;
   }
+  .card-img-top:hover{
+    animation: imgAnimation 0.6s ease ;
+  }
+  @keyframes imgAnimation{
+    0%{
+      transform: scale(1.01);
+    }
+    25%{
+      transform: scale(1.02);
+    }
+    50%{
+      transform: scale(1.03);
+    }
+    75%{
+      transform: scale(1.04);
+    }
+    100%{
+      transform: scale(1.05);
+    }
+   }

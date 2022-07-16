@@ -124,22 +124,22 @@ const ProfileScreen = () => {
     isValid = true;
   }
   console.log(userInfo);
+  console.log(user);
 
   useEffect(() => {
-    document.title = "Proshop|My Profile";
+    document.title = "TennisWorld|My Profile";
     if (!userInfo) {
       navigate("/login");
-    }
-    if (userInfo) {
-      setNameValueHandler(userInfo.name);
-      setEmailValueHandler(userInfo.email);
     } else {
       if (!user || !user.name || success) {
-        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails("profile"));
         dispatch(listMyOrders());
         setOrderList(orders);
         setOrderList([]);
+      }
+      if (userInfo) {
+        setNameValueHandler(userInfo.name);
+        setEmailValueHandler(userInfo.email);
       }
     }
   }, [

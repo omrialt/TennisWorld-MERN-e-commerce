@@ -11,16 +11,16 @@ import {
   Col,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import FormContainer from "../components/FormContainer";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import FormContainer from "../../components/FormContainer";
 import {
   listProductDetails,
   updateProduct,
-} from "../store/Products/productActions";
-import { PRODUCT_UPDATE_RESET } from "../store/Products/productConstants";
-import UseValid from "../hooks/use-valid";
-import Input from "../utils/Input";
+} from "../../store/Products/productActions";
+import { PRODUCT_UPDATE_RESET } from "../../store/Products/productConstants";
+import UseValid from "../../hooks/use-valid";
+import Input from "../../utils/Input";
 
 const ProductEditScreen = () => {
   const navigate = useNavigate();
@@ -287,7 +287,7 @@ const ProductEditScreen = () => {
   };
 
   useEffect(() => {
-    document.title = "Proshop|Edit Product";
+    document.title = "TennisWorld|Edit Product";
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       navigate("/admin/productlist");
@@ -366,7 +366,7 @@ const ProductEditScreen = () => {
   }
   return (
     <Fragment>
-      <Link to="/admin/productlist" className="btn btn-dark my-3">
+      <Link to="/admin/productlist" className="btn btn-success my-3">
         Go Back
       </Link>
       <FormContainer>

@@ -51,7 +51,7 @@ const LoginScreen = () => {
   }
 
   useEffect(() => {
-    document.title = "Proshop|Login";
+    document.title = "TennisWorld|Login";
     if (userInfo) {
       navigate(redirect);
     }

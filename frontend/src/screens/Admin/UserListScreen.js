@@ -3,9 +3,13 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import { listUsers, deleteUser, updateUser } from "../store/Users/userActions";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import {
+  listUsers,
+  deleteUser,
+  updateUser,
+} from "../../store/Users/userActions";
 const UserListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,7 +80,7 @@ const UserListScreen = () => {
   };
 
   useEffect(() => {
-    document.title = "Proshop|Users List";
+    document.title = "TennisWorld|Users List";
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {

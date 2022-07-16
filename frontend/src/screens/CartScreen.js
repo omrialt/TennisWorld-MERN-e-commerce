@@ -42,7 +42,7 @@ const CartScreen = () => {
   };
 
   useEffect(() => {
-    document.title = "Proshop|Cart";
+    document.title = "TennisWorld|Cart";
     if (id) {
       dispatch(addToCart(id, qty));
     }
@@ -99,7 +99,7 @@ const CartScreen = () => {
                     <Col xs={3} md={2}>
                       <Button
                         type="button"
-                        variant="light"
+                        variant="danger"
                         onClick={() => removeFromCartHandler(item.productId)}
                       >
                         <i className="fas fa-trash" />

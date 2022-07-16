@@ -3,6 +3,19 @@ import asyncHandler from "express-async-handler";
 
 //action-get all products
 //method-GET
+//route-/api/products/all
+//access-any
+const getProductsAll = asyncHandler(async (req, res) => {
+  const products = await Product.find();
+  if (products) {
+    res.json(products);
+  }
+  if (!products) {
+    return res.status(404).json({ message: "Products not found" });
+  }
+});
+//action-get all products by page
+//method-GET
 //route-/api/products
 //access-any
 const getProducts = asyncHandler(async (req, res) => {
@@ -180,12 +193,15 @@ const getSimilarProducts = asyncHandler(async (req, res) => {
   const randomOrderBrand = await productsBrand.sort(
     (a, b) => 0.5 - Math.random()
   );
+  if (!productsCategory || !productsBrand) {
+    res.json({ message: "Products not found" });
+  }
   res.json({
     categoryList: randomOrderCategory.slice(0, 3),
     brandList: randomOrderBrand.slice(0, 3),
   });
 });
-//action-get products by brand/category
+//action-get products by brand+category
 //method-GET
 //route-/api/products/choose
 //access-any
@@ -199,7 +215,28 @@ const getProductsBrandCategory = asyncHandler(async (req, res) => {
     res.json(products);
   }
 });
+//action-get products by brand or category
+//method-GET
+//route-/api/products/select
+//access-any
+const getProductsBrandOrCategory = asyncHandler(async (req, res) => {
+  const { category, brand } = req.query;
+  let products;
+  if (!category) {
+    products = await Product.find({ brand: brand });
+    res.json(products);
+  }
+  if (!brand) {
+    products = await Product.find({ category: category });
+    res.json(products);
+  }
+  if (!category || !brand || !products) {
+    res.json({ message: "Products not found" });
+  }
+});
+
 export {
+  getProductsAll,
   getProducts,
   getProductById,
   deleteProduct,
@@ -209,4 +246,5 @@ export {
   getTopProducts,
   getSimilarProducts,
   getProductsBrandCategory,
+  getProductsBrandOrCategory,
 };

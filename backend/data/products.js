@@ -19,6 +19,7 @@ const products = [
     countInStock: 10,
     rating: 4.5,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Babolat Pure Aero Plus Racket",
@@ -38,6 +39,7 @@ const products = [
     countInStock: 14,
     rating: 5,
     numReviews: 1,
+    sold: 0,
   },
   {
     name: "Babolat Pure Drive 2021 Racket",
@@ -57,6 +59,7 @@ const products = [
     countInStock: 22,
     rating: 5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Babolat Pure Drive Team Wimbledon",
@@ -76,6 +79,7 @@ const products = [
     countInStock: 8,
     rating: 5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Babolat Pure Strike 16x19 3rd Gen",
@@ -95,6 +99,7 @@ const products = [
     countInStock: 5,
     rating: 0,
     numReviews: 0,
+    sold: 0,
   },
   {
     name: "Wilson Clash 98 v2 Racket",
@@ -114,6 +119,7 @@ const products = [
     countInStock: 100,
     rating: 4.5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Wilson Clash 100 v2 Racket",
@@ -133,6 +139,7 @@ const products = [
     countInStock: 100,
     rating: 4.5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Wilson Ultra 100L v3 Racket",
@@ -152,6 +159,7 @@ const products = [
     countInStock: 96,
     rating: 4,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Wilson Pro Staff RF97 v13 Racket",
@@ -171,6 +179,7 @@ const products = [
     countInStock: 32,
     rating: 5,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Head Speed Pro 2022 Racket",
@@ -190,6 +199,7 @@ const products = [
     countInStock: 24,
     rating: 5,
     numReviews: 6,
+    sold: 0,
   },
   {
     name: "Head Graphene 360+ Speed Pro Black",
@@ -209,6 +219,7 @@ const products = [
     countInStock: 0,
     rating: 5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Head Graphene 360 Radical Pro",
@@ -228,6 +239,7 @@ const products = [
     countInStock: 4,
     rating: 5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Head Gravity Tour Racket",
@@ -247,6 +259,7 @@ const products = [
     countInStock: 12,
     rating: 3.5,
     numReviews: 3,
+    sold: 0,
   },
   {
     name: "Prince Twistpower X100 Tour",
@@ -266,6 +279,7 @@ const products = [
     countInStock: 14,
     rating: 4,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Prince Twistpower X97 Tour",
@@ -285,9 +299,10 @@ const products = [
     countInStock: 38,
     rating: 5,
     numReviews: 6,
+    sold: 0,
   },
   {
-    name: "Prince Ripstick 100 300g",
+    name: "Prince Ripstick 100 300g Racket",
     image:
       "https://img.tennis-warehouse.com/watermark/rs.php?path=PRIPS-1.jpg&nw=540",
     description:
@@ -304,6 +319,7 @@ const products = [
     countInStock: 54,
     rating: 4,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Prince Ripstick 100 280g Racket",
@@ -323,6 +339,7 @@ const products = [
     countInStock: 22,
     rating: 4,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Wilson Natural Gut 17/1.25",
@@ -341,6 +358,7 @@ const products = [
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,
+    sold: 0,
   },
   {
     name: "Wilson NXT Soft 16/1.30 String Silver",
@@ -358,6 +376,7 @@ const products = [
     countInStock: 14,
     rating: 4.5,
     numReviews: 15,
+    sold: 0,
   },
   {
     name: "Wilson NXT DuraMax 15/1.40 String",
@@ -376,6 +395,7 @@ const products = [
     countInStock: 55,
     rating: 5,
     numReviews: 12,
+    sold: 0,
   },
   {
     name: "Wilson Duo Control 4GR 1.25 & NXT Control 16",
@@ -395,6 +415,7 @@ const products = [
     countInStock: 32,
     rating: 5,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Babolat RPM Rough 17/1.25 String",
@@ -412,6 +433,7 @@ const products = [
     countInStock: 24,
     rating: 4,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Babolat Xcel 16/1.30 String",
@@ -429,6 +451,7 @@ const products = [
     countInStock: 24,
     rating: 4,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Babolat RPM Blast 18/1.20 String",
@@ -446,6 +469,7 @@ const products = [
     countInStock: 56,
     rating: 5,
     numReviews: 2,
+    sold: 0,
   },
   {
     name: "Babolat RPM Hurricane 17/1.25 String",
@@ -463,6 +487,7 @@ const products = [
     countInStock: 8,
     rating: 3.5,
     numReviews: 7,
+    sold: 0,
   },
   {
     name: "Luxilon ALU Power 16L/1.25 String",
@@ -480,6 +505,7 @@ const products = [
     countInStock: 16,
     rating: 4.5,
     numReviews: 25,
+    sold: 0,
   },
   {
     name: "Luxilon ALU Power Rough 16/1.30 String",
@@ -497,6 +523,7 @@ const products = [
     countInStock: 14,
     rating: 4.5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Luxilon LXN Smart 16/1.30 String",
@@ -514,6 +541,7 @@ const products = [
     countInStock: 14,
     rating: 4.5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Luxilon Element Rough 16/1.30 String",
@@ -531,6 +559,7 @@ const products = [
     countInStock: 8,
     rating: 4,
     numReviews: 2,
+    sold: 0,
   },
   {
     name: "Prince Synthetic Gut 16/1.30 Duraflex String",
@@ -548,6 +577,7 @@ const products = [
     countInStock: 8,
     rating: 4,
     numReviews: 2,
+    sold: 0,
   },
   {
     name: "Prince Premier Touch 16/1.30 String",
@@ -565,6 +595,7 @@ const products = [
     countInStock: 5,
     rating: 3,
     numReviews: 1,
+    sold: 0,
   },
   {
     name: "Head Lynx Touch 16/1.30 String",
@@ -582,6 +613,7 @@ const products = [
     countInStock: 2,
     rating: 3,
     numReviews: 1,
+    sold: 0,
   },
   {
     name: "Head Reflex MLT 16/1.30 String",
@@ -600,6 +632,7 @@ const products = [
     countInStock: 20,
     rating: 5,
     numReviews: 5,
+    sold: 0,
   },
 
   {
@@ -617,6 +650,7 @@ const products = [
     countInStock: 20,
     rating: 4,
     numReviews: 12,
+    sold: 0,
   },
   {
     name: "Babolat Pure Aero Rafa 12 Pack Bag",
@@ -633,6 +667,7 @@ const products = [
     countInStock: 20,
     rating: 5,
     numReviews: 15,
+    sold: 0,
   },
   {
     name: "Babolat Pure Drive 3-Pack Backpack Bag",
@@ -649,6 +684,7 @@ const products = [
     countInStock: 20,
     rating: 5,
     numReviews: 15,
+    sold: 0,
   },
   {
     name: "Babolat Pure Aero 6 Pack Bag Black/Yellow",
@@ -665,6 +701,7 @@ const products = [
     countInStock: 5,
     rating: 5,
     numReviews: 20,
+    sold: 0,
   },
   {
     name: "Wilson Super Tour 6 Pack Clash Bag",
@@ -681,6 +718,7 @@ const products = [
     countInStock: 28,
     rating: 5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Wilson Super Tour 9 Pack Clash Bag",
@@ -697,6 +735,7 @@ const products = [
     countInStock: 34,
     rating: 5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Wilson Super Tour Clash Backpack Bag",
@@ -713,6 +752,7 @@ const products = [
     countInStock: 10,
     rating: 5,
     numReviews: 6,
+    sold: 0,
   },
   {
     name: "Wilson Super Tour 15 Pack Clash Bag",
@@ -729,6 +769,7 @@ const products = [
     countInStock: 80,
     rating: 5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Head Tour Team 9R Bag Black/Orange",
@@ -745,6 +786,7 @@ const products = [
     countInStock: 60,
     rating: 5,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Head Gravity r-PET Tennis Backpack Bag",
@@ -761,6 +803,7 @@ const products = [
     countInStock: 45,
     rating: 4,
     numReviews: 15,
+    sold: 0,
   },
   {
     name: "Head Tour Team 6R Bag Rose/White",
@@ -777,6 +820,7 @@ const products = [
     countInStock: 5,
     rating: 4.5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Head Tour Team 12R Bag Black/Orange",
@@ -793,6 +837,7 @@ const products = [
     countInStock: 5,
     rating: 4.5,
     numReviews: 4,
+    sold: 0,
   },
   {
     name: "Prince Tour Backpack Duffelpack Bag Black/Green",
@@ -809,6 +854,7 @@ const products = [
     countInStock: 20,
     rating: 4,
     numReviews: 2,
+    sold: 0,
   },
   {
     name: "Prince Tour Future 6 Pack Bag Black/Green",
@@ -825,6 +871,7 @@ const products = [
     countInStock: 30,
     rating: 4,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Prince Tour 9 Pack Bag Black/Green",
@@ -841,6 +888,7 @@ const products = [
     countInStock: 14,
     rating: 5,
     numReviews: 20,
+    sold: 0,
   },
   {
     name: "Babolat Tour Original Overgrip",
@@ -856,6 +904,7 @@ const products = [
     countInStock: 30,
     rating: 4,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Babolat Pro Response Overgrip",
@@ -871,6 +920,7 @@ const products = [
     countInStock: 30,
     rating: 4,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Babolat VS Overgrips 12-pack White",
@@ -886,6 +936,7 @@ const products = [
     countInStock: 65,
     rating: 5,
     numReviews: 5,
+    sold: 0,
   },
   {
     name: "Wilson Pro Overgrip Sensation",
@@ -901,6 +952,7 @@ const products = [
     countInStock: 80,
     rating: 5,
     numReviews: 12,
+    sold: 0,
   },
   {
     name: "Wilson Pro Overgrip Sensation 12 Pack",
@@ -916,6 +968,7 @@ const products = [
     countInStock: 40,
     rating: 4,
     numReviews: 14,
+    sold: 0,
   },
   {
     name: "Head Super Comp Overgrips 3 Pack",
@@ -931,6 +984,7 @@ const products = [
     countInStock: 50,
     rating: 5,
     numReviews: 22,
+    sold: 0,
   },
   {
     name: "Head Prestige Pro Overgrips",
@@ -946,6 +1000,7 @@ const products = [
     countInStock: 50,
     rating: 5,
     numReviews: 22,
+    sold: 0,
   },
   {
     name: "Head Prime Tour Overgrip 50 Pack",
@@ -961,6 +1016,7 @@ const products = [
     countInStock: 60,
     rating: 5,
     numReviews: 8,
+    sold: 0,
   },
   {
     name: "Prince DuraPro+ 3 Pack Overgrip",
@@ -976,6 +1032,7 @@ const products = [
     countInStock: 112,
     rating: 3.5,
     numReviews: 10,
+    sold: 0,
   },
   {
     name: "Prince Dura Tred+ Overgrip Black",
@@ -991,6 +1048,7 @@ const products = [
     countInStock: 15,
     rating: 3.5,
     numReviews: 18,
+    sold: 0,
   },
   {
     name: "Prince ResiPro 12 Pack Overgrip White",
@@ -1006,6 +1064,7 @@ const products = [
     countInStock: 28,
     rating: 3.5,
     numReviews: 28,
+    sold: 0,
   },
   {
     name: "Pro Penn Marathon Extra Duty Tennis Balls",
@@ -1019,6 +1078,7 @@ const products = [
     countInStock: 38,
     rating: 3.5,
     numReviews: 28,
+    sold: 0,
   },
   {
     name: "Penn Tour Extra Duty Tennis Balls",
@@ -1032,6 +1092,7 @@ const products = [
     countInStock: 112,
     rating: 5,
     numReviews: 30,
+    sold: 0,
   },
   {
     name: "Penn Championship Extra Duty Tennis Balls",
@@ -1045,6 +1106,7 @@ const products = [
     countInStock: 200,
     rating: 5,
     numReviews: 50,
+    sold: 0,
   },
   {
     name: "Wilson US Open XD Tennis Balls",
@@ -1058,6 +1120,7 @@ const products = [
     countInStock: 74,
     rating: 5,
     numReviews: 42,
+    sold: 0,
   },
   {
     name: "Wilson Triniti Pro Tennis Balls",
@@ -1071,33 +1134,9 @@ const products = [
     countInStock: 42,
     rating: 5,
     numReviews: 16,
+    sold: 0,
   },
-  {
-    name: "Dunlop ATP Championship XD Tennis Balls",
-    image:
-      "https://img.tennis-warehouse.com/watermark/rs.php?path=DATPCHXDR-1.jpg&nw=540",
-    description:
-      "The Dunlop ATP Championship Extra Duty tennis ball is officially endorsed by the ATP Tour! The Extra Duty ball is perfect for club and recreational players. The Max Core and Durafelt HD Cloth technologies provide maximum durability suitable for play on all court surfaces.",
-    brand: "Dunlop",
-    category: "Balls",
-    price: 4.99,
-    countInStock: 80,
-    rating: 5,
-    numReviews: 14,
-  },
-  {
-    name: "Dunlop ATP Championship XD Tennis 24 Balls",
-    image:
-      "https://img.tennis-warehouse.com/watermark/rs.php?path=DCHXD-1.jpg&nw=540",
-    description:
-      "The Dunlop ATP Championship Extra Duty tennis ball is officially endorsed by the ATP Tour! The Extra Duty ball is perfect for club and recreational players. The Max Core and Durafelt HD Cloth technologies provide maximum durability suitable for play on all court surfaces.Total of 24 cans of balls per case, Three balls per can.",
-    brand: "Dunlop",
-    category: "Balls",
-    price: 74.99,
-    countInStock: 60,
-    rating: 5,
-    numReviews: 14,
-  },
+
   {
     name: "Babolat Gold All Court Balls",
     image:
@@ -1110,6 +1149,7 @@ const products = [
     countInStock: 14,
     rating: 5,
     numReviews: 20,
+    sold: 0,
   },
 ];
 

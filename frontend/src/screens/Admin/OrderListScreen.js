@@ -2,10 +2,10 @@ import { useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
-import { listOrders } from "../store/Orders/orderActions";
+import { listOrders, topOrders } from "../../store/Orders/orderActions";
 
 const OrderListScreen = () => {
   const dispatch = useDispatch();
@@ -20,9 +20,10 @@ const OrderListScreen = () => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    document.title = "Proshop|Order List";
+    document.title = "TennisWorld|Order List";
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOrders());
+      dispatch(topOrders());
     } else {
       navigate("/login");
     }

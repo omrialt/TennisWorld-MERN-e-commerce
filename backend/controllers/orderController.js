@@ -52,6 +52,14 @@ const addOrderItems = asyncHandler(async (req, res) => {
     for (const item of items) {
       const pro = await Product.findById(item.productId);
       pro.countInStock -= items[0].qty;
+      pro.sold += items[0].qty;
+
+      pro.inOrders.push({
+        orderId: order._id,
+        createdAt: new Date(),
+        count: items[0].qty,
+        user: req.user,
+      });
       await pro.save();
     }
     const { name, email } = req.user;
@@ -257,6 +265,17 @@ const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find().populate("user", "id name");
   res.json(orders);
 });
+//action-get top 5 sold products
+//method-GET
+//route-/api/orders/topsales
+//access-protect,admin
+const getTopProductsSold = asyncHandler(async (req, res) => {
+  const products = await Product.find({ sold: { $gt: 0 } })
+    .sort({ sold: -1 })
+    .limit(5);
+  res.json(products);
+});
+
 export {
   addOrderItems,
   getOrderById,
@@ -264,4 +283,5 @@ export {
   updateOrderToDelivered,
   getMyOrders,
   getOrders,
+  getTopProductsSold,
 };

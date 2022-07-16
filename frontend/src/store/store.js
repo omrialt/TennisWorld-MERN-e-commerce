@@ -2,6 +2,7 @@ import { combineReducers, applyMiddleware } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import {
+  productListAllReducer,
   productListReducer,
   productDetailsReducer,
   productDeleteReducer,
@@ -11,6 +12,7 @@ import {
   productTopRatedReducer,
   productSimilarReducer,
   productsBrandCategoryReducer,
+  productsBrandOrCategoryReducer,
 } from "./Products/productsReducers";
 import { cartReducer, wishListReducer } from "./Cart/cartReducer";
 import {
@@ -29,22 +31,18 @@ import {
   orderListMyReducer,
   orderListReducer,
   orderDeliverReducer,
+  orderTopSalesReducer,
 } from "./Orders/orderReducer";
-import {
-  articleCreateReducer,
-  articleDeleteReducer,
-  articleDetailsReducer,
-  articleListReducer,
-  articleReviewCreateReducer,
-  articleUpdateReducer,
-} from "./Articles/articleReducer";
+
 import { createStore } from "redux";
 
 const reducer = combineReducers({
+  productsListAll: productListAllReducer,
   productsList: productListReducer,
-  productTopRated: productTopRatedReducer,
-  productSimilar: productSimilarReducer,
+  productsTopRated: productTopRatedReducer,
+  productsSimilar: productSimilarReducer,
   productsBrandCategory: productsBrandCategoryReducer,
+  productsBrandOrCategory: productsBrandOrCategoryReducer,
   productDetail: productDetailsReducer,
   productDelete: productDeleteReducer,
   productCreate: productCreateReducer,
@@ -65,12 +63,7 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
-  articlesList: articleListReducer,
-  articleDetail: articleDetailsReducer,
-  articleDelete: articleDeleteReducer,
-  articleCreate: articleCreateReducer,
-  articleUpdate: articleUpdateReducer,
-  articleReviewCreate: articleReviewCreateReducer,
+  orderTopSales: orderTopSalesReducer,
 });
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))

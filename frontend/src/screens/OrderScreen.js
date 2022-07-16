@@ -69,9 +69,8 @@ const OrderScreen = () => {
     dispatch(deliverOrder(id));
     dispatch(listMyOrders());
   };
-
   useEffect(() => {
-    document.title = "Proshop|My Order";
+    document.title = "TennisWorld|My Order";
     if (!userInfo) {
       navigate("/login");
     }
@@ -166,7 +165,7 @@ const OrderScreen = () => {
                             />
                           </Col>
                           <Col>
-                            <Link to={`/product/${item.product}`}>
+                            <Link to={`/product/${item.productId}`}>
                               {item.name}
                             </Link>
                           </Col>

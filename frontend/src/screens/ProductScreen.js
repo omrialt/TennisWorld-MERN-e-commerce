@@ -12,10 +12,10 @@ import {
   ListGroupItem,
   FormGroup,
   FormLabel,
+  Table,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Rating from "../components/Rating";
-import Product from "../components/Product";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -25,9 +25,10 @@ import {
 } from "../store/Products/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import ProductInScreen from "../components/ProductInScreen";
+import ProductInScreen from "./ProductInScreen";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../store/Products/productConstants";
 import { addToWishList, addToCart } from "../store/Cart/CartActions";
+import { LinkContainer } from "react-router-bootstrap";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
@@ -48,7 +49,7 @@ const ProductScreen = () => {
     productReviewCreate;
 
   //get similar products
-  const productSimilar = useSelector((state) => state.productSimilar);
+  const productSimilar = useSelector((state) => state.productsSimilar);
 
   const {
     loading: loadingSimilar,
@@ -89,6 +90,9 @@ const ProductScreen = () => {
       navigate("/");
     }, 2000);
   };
+  const navigateToEditProduct = (id) => {
+    navigate(`/admin/product/${id}/edit`);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -118,7 +122,7 @@ const ProductScreen = () => {
     productBrand,
     productName,
   ]);
-  console.log(productsList);
+
   return (
     <Fragment>
       {loading ? (
@@ -127,7 +131,7 @@ const ProductScreen = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <Fragment>
-          <Link to="/" className="btn btn-dark my-3">
+          <Link to="/" className="btn btn-success my-3">
             Go Back
           </Link>
           <Row>
@@ -268,7 +272,7 @@ const ProductScreen = () => {
                     </ListGroup.Item>
                   )}
                   <ListGroup.Item>
-                    {!userInfo?.isAdmin && (
+                    {!userInfo?.isAdmin ? (
                       <Fragment>
                         <Button
                           onClick={addToCartHandler}
@@ -288,6 +292,15 @@ const ProductScreen = () => {
                           Add To WishList
                         </Button>
                       </Fragment>
+                    ) : (
+                      <Button
+                        style={{ width: "100%" }}
+                        className="btn btn-dark btn-lg btn-block my-3"
+                        type="button"
+                        onClick={() => navigateToEditProduct(product._id)}
+                      >
+                        Edit Product
+                      </Button>
                     )}
                   </ListGroup.Item>
                 </ListGroup>
@@ -364,6 +377,48 @@ const ProductScreen = () => {
           <hr />
         </Fragment>
       )}
+      <Fragment>
+        {userInfo?.isAdmin && product.inOrders.length > 0 && (
+          <Row>
+            <Col md={12}>
+              <h1>Stats</h1>
+              <Table striped borders hover responsive className="table-sm">
+                <thead>
+                  <tr>
+                    <th>Order Id</th>
+                    <th>User(Id)</th>
+                    <th>Created At</th>
+                    <th>Count</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {product.inOrders.map((order) => {
+                    return (
+                      <tr key={order.orderId}>
+                        <td>{order.orderId}</td>
+                        <td>
+                          {order.user.name}({order.user._id})
+                        </td>
+                        <td>{order.createdAt.substring(0, 10)}</td>
+                        <td>{order.count}</td>
+                        <td>
+                          <LinkContainer to={`/order/${order.orderId}`}>
+                            <Button className="btn-sm" variant="light">
+                              Details
+                            </Button>
+                          </LinkContainer>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        )}
+      </Fragment>
+
       {loadingSimilar ? (
         <Loader />
       ) : errorSimilar ? (

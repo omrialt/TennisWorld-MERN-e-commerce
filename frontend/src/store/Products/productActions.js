@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  PRODUCTS_LIST_ALL_FAIL,
+  PRODUCT_LIST_ALL_REQUEST,
+  PRODUCT_LIST_ALL_SUCCESS,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCTS_LIST_FAIL,
@@ -27,6 +30,9 @@ import {
   PRODUCT_CHOOSE_FAIL,
   PRODUCT_CHOOSE_REQUEST,
   PRODUCT_CHOOSE_SUCCESS,
+  PRODUCT_SELECT_FAIL,
+  PRODUCT_SELECT_REQUEST,
+  PRODUCT_SELECT_SUCCESS,
 } from "./productConstants";
 
 export const listProducts =
@@ -51,6 +57,24 @@ export const listProducts =
       });
     }
   };
+export const listProductsAll = () => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_LIST_ALL_REQUEST });
+    const { data } = await axios.get(`/api/products/all`);
+    dispatch({
+      type: PRODUCT_LIST_ALL_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PRODUCTS_LIST_ALL_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
+};
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {
@@ -251,6 +275,27 @@ export const listBrandCategoryProducts =
     } catch (err) {
       dispatch({
         type: PRODUCT_CHOOSE_FAIL,
+        payload:
+          err.response && err.response.data.message
+            ? err.response.data.message
+            : err.message,
+      });
+    }
+  };
+export const listBrandOrCategoryProducts =
+  (select, name) => async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_SELECT_REQUEST });
+      const { data } = await axios.get(
+        `/api/products/select/?${select}=${name}`
+      );
+      dispatch({
+        type: PRODUCT_SELECT_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: PRODUCT_SELECT_FAIL,
         payload:
           err.response && err.response.data.message
             ? err.response.data.message

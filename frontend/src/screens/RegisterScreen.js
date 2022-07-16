@@ -78,7 +78,7 @@ const RegisterScreen = () => {
     isValid = true;
   }
   useEffect(() => {
-    document.title = "Proshop|Register";
+    document.title = "TennisWorld|Register";
     if (userInfoLogin) {
       navigate(redirect);
     }

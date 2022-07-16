@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 const SideNav = () => {
   return (
     <div
@@ -234,14 +234,6 @@ const SideNav = () => {
                   className="link-white rounded text-decoration-none"
                 >
                   Penn
-                </Link>
-              </li>
-              <li className="py-1 px-4">
-                <Link
-                  to={`/choose/dunlop/balls`}
-                  className="link-white rounded text-decoration-none"
-                >
-                  Dunlop
                 </Link>
               </li>
             </ul>

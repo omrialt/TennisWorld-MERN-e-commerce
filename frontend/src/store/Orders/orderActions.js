@@ -18,6 +18,9 @@ import {
   ORDER_LIST_FAIL,
   ORDER_LIST_REQUEST,
   ORDER_LIST_SUCCESS,
+  ORDER_TOP_FAIL,
+  ORDER_TOP_REQUEST,
+  ORDER_TOP_SUCCESS,
 } from "./orderConstants";
 import axios from "axios";
 
@@ -209,6 +212,34 @@ export const listOrders = () => async (dispatch, getState) => {
   } catch (err) {
     dispatch({
       type: ORDER_LIST_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
+};
+export const topOrders = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_TOP_REQUEST,
+    });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        x_auth_token: userInfo.token,
+      },
+    };
+    const { data } = await axios.get(`/api/orders/topsales`, config);
+    dispatch({
+      type: ORDER_TOP_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ORDER_TOP_FAIL,
       payload:
         err.response && err.response.data.message
           ? err.response.data.message

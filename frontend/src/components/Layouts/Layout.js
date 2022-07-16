@@ -1,5 +1,5 @@
-import { Fragment, useContext } from "react";
-import ShopContext from "../store/shop-context";
+import { useContext } from "react";
+import ShopContext from "../../store/shop-context";
 import Header from "./Header";
 import Footer from "./Footer";
 import SideNav from "./SideNav";
@@ -25,10 +25,10 @@ const Layout = (props) => {
         <div className="main_container">
           <Container className="my-5" onClick={toggle}>
             <main className="py-3">{props.children}</main>
+            <Footer />
           </Container>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

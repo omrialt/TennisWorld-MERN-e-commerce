@@ -14,7 +14,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../store/Cart/CartActions";
 
 const PaymentScreen = () => {
-  document.title = "Proshop|Payment";
+  document.title = "TennisWorld|Payment";
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState("PayPal");

@@ -3,7 +3,7 @@ const Loader = () => {
   return (
     <Spinner
       animation="border"
-      variant="dark"
+      variant="success"
       role="status"
       style={{
         width: "100px",

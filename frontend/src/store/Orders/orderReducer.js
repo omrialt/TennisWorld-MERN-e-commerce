@@ -21,6 +21,9 @@ import {
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_RESET,
   ORDER_CREATE_RESET,
+  ORDER_TOP_FAIL,
+  ORDER_TOP_REQUEST,
+  ORDER_TOP_SUCCESS,
 } from "./orderConstants";
 
 export const orderCreateReducer = (state = {}, action) => {
@@ -156,6 +159,27 @@ export const orderListReducer = (state = { orders: [] }, action) => {
         orders: action.payload,
       };
     case ORDER_LIST_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+export const orderTopSalesReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case ORDER_TOP_REQUEST:
+      return {
+        loading: true,
+      };
+    case ORDER_TOP_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload,
+      };
+    case ORDER_TOP_FAIL:
       return {
         loading: false,
         error: action.payload,

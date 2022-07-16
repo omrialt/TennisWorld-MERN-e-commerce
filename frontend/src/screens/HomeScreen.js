@@ -4,11 +4,16 @@ import Product from "../components/Product";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../store/Products/productActions";
+import {
+  listProducts,
+  listProductsAll,
+} from "../store/Products/productActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "./Paginate";
 import ProductCarousel from "../components/ProductCaruosel";
+import { Link } from "react-router-dom";
+import brandsArray from "../utils/brands";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -22,13 +27,24 @@ const HomeScreen = () => {
   let { loading, error, products, page, pages } = productsList;
 
   useEffect(() => {
-    document.title = "Proshop|Home";
+    document.title = "TennisWorld|Home";
+    dispatch(listProductsAll());
     dispatch(listProducts(pageNumber));
   }, [dispatch, pageNumber]);
 
   return (
     <Fragment>
       <ProductCarousel />
+      <h1>Our Brands</h1>
+      <div className="flex_brand">
+        {brandsArray.map((brand) => (
+          <div className="div_brand">
+            <Link to={brand.link}>
+              <img className="brand_img" alt={brand.brand} src={brand.banner} />
+            </Link>
+          </div>
+        ))}
+      </div>
       <h1>Latest products</h1>
       {loading ? (
         <Loader />

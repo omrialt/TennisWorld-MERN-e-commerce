@@ -3,16 +3,16 @@ import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import Paginate from "./Paginate";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import Paginate from "../Paginate";
 import { LinkContainer } from "react-router-bootstrap";
 import {
   listProducts,
   deleteProduct,
   createProduct,
-} from "../store/Products/productActions";
-import { PRODUCT_CREATE_RESET } from "../store/Products/productConstants";
+} from "../../store/Products/productActions";
+import { PRODUCT_CREATE_RESET } from "../../store/Products/productConstants";
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const ProductListScreen = () => {
   };
 
   useEffect(() => {
-    document.title = "Proshop|Product List";
+    document.title = "TennisWorld|Product List";
     dispatch({ type: PRODUCT_CREATE_RESET });
     if (!userInfo.isAdmin) {
       navigate("/login");

@@ -125,6 +125,16 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    sold: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    inOrders: {
+      type: Array,
+      required: true,
+      default: [],
+    },
   },
   { timestamps: true }
 );
