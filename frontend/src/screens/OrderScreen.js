@@ -99,7 +99,7 @@ const OrderScreen = () => {
       }
     }
   }, [dispatch, id, order, successPay, successDeliver, navigate, userInfo]);
-
+  console.log(userInfo);
   return loading ? (
     <Loader />
   ) : error ? (
@@ -112,10 +112,6 @@ const OrderScreen = () => {
           <ListGroup variant="flush">
             <ListGroupItem>
               <h2>Shipping</h2>
-              <p>
-                <strong>Name: </strong> {order.user.name}{" "}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
-              </p>
               <p>
                 <strong>Address: </strong>
                 {order.shippingAddress.address},{order.shippingAddress.city}{" "}
@@ -217,13 +213,13 @@ const OrderScreen = () => {
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
                     <Loader />
-                  ) : !userInfo.isAdmin ? (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
                   ) : (
-                    ""
+                    !userInfo.isAdmin && (
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
+                    )
                   )}
                 </ListGroupItem>
               )}

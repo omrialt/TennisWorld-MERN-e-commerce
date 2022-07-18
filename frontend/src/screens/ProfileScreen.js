@@ -93,6 +93,7 @@ const ProfileScreen = () => {
       resetPasswordConfirmValue();
       resetNameValue();
       setMessage(null);
+      dispatch({ type: USER_UPDATE_PROFILE_RESET });
     }
   };
 
@@ -123,8 +124,6 @@ const ProfileScreen = () => {
   ) {
     isValid = true;
   }
-  console.log(userInfo);
-  console.log(user);
 
   useEffect(() => {
     document.title = "TennisWorld|My Profile";
@@ -132,10 +131,9 @@ const ProfileScreen = () => {
       navigate("/login");
     } else {
       if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails("profile"));
         dispatch(listMyOrders());
-        setOrderList(orders);
-        setOrderList([]);
       }
       if (userInfo) {
         setNameValueHandler(userInfo.name);
@@ -148,7 +146,6 @@ const ProfileScreen = () => {
     userInfo,
     user,
     success,
-    orders,
     setNameValueHandler,
     setEmailValueHandler,
   ]);

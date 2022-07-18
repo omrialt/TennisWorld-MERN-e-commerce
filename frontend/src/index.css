@@ -70,20 +70,14 @@ color:white !important
   margin: 0.1rem;
 }
 /*carousel*/
-.carousel-caption h2 {
-  line-height: 2.5rem;
-}
+
 
 .carousel img {
-  width: 200px;
+  width: 220px;
   height: 300px;
   padding: 30px;
   margin-left: 100px;
   border-radius: 2.25rem !important;
-}
-
-.carousel-title {
-  position: absolute;
 }
 
 .invalid input {
@@ -133,11 +127,12 @@ opacity: 0 !important
   animation: imgAnimation 0.6s ease ;
 }
 @media only screen and (max-width: 1000px) {
-  .carousel-caption h2 {
-    font-size: 1rem;
+  .carousel-caption h2,.carousel_price {
+    opacity: 0;
+
   }
   .carousel img{
-    margin-left:auto;
+    margin-left:8%;
   }
   .hidden{
     opacity: 1 !important;

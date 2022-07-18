@@ -208,7 +208,6 @@ const getSimilarProducts = asyncHandler(async (req, res) => {
 const getProductsBrandCategory = asyncHandler(async (req, res) => {
   const { category, brand } = req.query;
   const products = await Product.find({ brand: brand, category: category });
-  console.log(products);
   if (!products) {
     res.status(404).json({ message: "Products not found!" });
   } else {

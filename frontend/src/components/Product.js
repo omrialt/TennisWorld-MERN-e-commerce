@@ -28,9 +28,30 @@ const Product = ({ product }) => {
     document.querySelector(`.button_${id}`).classList.remove("div_animation");
   };
 
-  const addToCartHandler = (id) => {
-    const product = products.filter((product) => product._id === id)[0];
+  const productSimilar = useSelector((state) => state.productsSimilar);
 
+  const { productsList: listSimilar } = productSimilar;
+
+  const productsBrandCategory = useSelector(
+    (state) => state.productsBrandCategory
+  );
+
+  const { products: productsBrandCategoryList } = productsBrandCategory;
+
+  const productsBrandOrCategory = useSelector(
+    (state) => state.productsBrandOrCategory
+  );
+
+  const { products: productsBrandOrCategoryList } = productsBrandOrCategory;
+
+  const addToCartHandler = (id) => {
+    let list = products.concat(
+      productsBrandCategoryList,
+      productsBrandOrCategoryList,
+      listSimilar.categoryList,
+      listSimilar.brandList
+    );
+    const product = list.find((product) => product._id === id);
     Swal.fire({
       icon: "success",
       title: `${product.name} add to cart secussefuly`,
@@ -40,7 +61,13 @@ const Product = ({ product }) => {
     dispatch(addToCart(product._id, 1));
   };
   const addToWishListHandler = (id) => {
-    const product = products.filter((product) => product._id === id)[0];
+    let list = products.concat(
+      productsBrandCategoryList,
+      productsBrandOrCategoryList,
+      listSimilar.categoryList,
+      listSimilar.brandList
+    );
+    const product = list.find((product) => product._id === id);
 
     Swal.fire({
       icon: "success",

@@ -25,7 +25,7 @@ import {
 } from "../store/Products/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import ProductInScreen from "./ProductInScreen";
+import Product from "../components/Product";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../store/Products/productConstants";
 import { addToWishList, addToCart } from "../store/Cart/CartActions";
 import { LinkContainer } from "react-router-bootstrap";
@@ -429,7 +429,7 @@ const ProductScreen = () => {
           <Row>
             {productsList.categoryList.map((prod) => (
               <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
-                <ProductInScreen product={prod} />
+                <Product product={prod} />
               </Col>
             ))}
           </Row>
@@ -439,7 +439,7 @@ const ProductScreen = () => {
             {productsList.brandList.length > 0 ? (
               productsList.brandList.map((prod) => (
                 <Col key={prod._id} sm={12} md={6} lg={3} xl={3}>
-                  <ProductInScreen product={prod} />
+                  <Product product={prod} />
                 </Col>
               ))
             ) : (

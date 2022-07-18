@@ -1,5 +1,6 @@
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
+import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
@@ -35,7 +36,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
   } else {
     const order = new Order({
       orderItems,
-      user: req.user,
+      user: req.user._id,
       shippingAddress,
       paymentMethod,
       itemsPrice,
@@ -145,14 +146,15 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       update_time: req.body.update_time,
       email_address: req.body.email_address,
     };
+    const userPaid = await User.findById(req.user._id);
     const updatedOrder = await order.save();
     res.json(updatedOrder);
-    const { name, email } = order.user;
+
     await trasporter.sendMail({
-      to: email,
+      to: userPaid.email,
       from: process.env.MAIL_FROM,
       subject: `Paid succeeded-order ${order._id}!`,
-      html: `<h2>Hey ${name}!</h2>
+      html: `<h2>Hey ${userPaid.name}!</h2>
       <p>We received your pay for order ${order._id} ($${
         order.totalPrice
       }) and we make a deliver to you soon</p>
@@ -215,12 +217,12 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 
     const updatedOrder = await order.save();
     res.json(updatedOrder);
-    const { name, email } = order.user;
+    const userPaid = await User.findById(updatedOrder.user);
     await trasporter.sendMail({
-      to: email,
+      to: userPaid.email,
       from: process.env.MAIL_FROM,
       subject: `Your order was shipped-order ${order._id}!`,
-      html: `<h2>Hey ${name}!</h2>
+      html: `<h2>Hey ${userPaid.name}!</h2>
       <p>We shipped your order ${order._id} and you will get it soon</p>
       <table style="border:1px;">
       <thead>
@@ -253,7 +255,10 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 //route-/api/orders/myorders
 //access-protect
 const getMyOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user });
+  const orders = await Order.find({ user: req.user._id }).sort({
+    createdAtTime: -1,
+  });
+
   res.json(orders);
 });
 
@@ -262,7 +267,9 @@ const getMyOrders = asyncHandler(async (req, res) => {
 //route-/api/orders
 //access-protect,admin
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find().populate("user", "id name");
+  const orders = await Order.find()
+    .sort({ createdAtTime: -1 })
+    .populate("user", "id name");
   res.json(orders);
 });
 //action-get top 5 sold products
@@ -275,6 +282,9 @@ const getTopProductsSold = asyncHandler(async (req, res) => {
     .limit(5);
   res.json(products);
 });
+//action-get last orders
+//method-GET
+//route-/api/orders/last
 
 export {
   addOrderItems,

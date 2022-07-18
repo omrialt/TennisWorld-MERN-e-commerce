@@ -31,12 +31,7 @@ const ProductCarousel = () => {
               <Fragment>
                 <h2>{product.name}</h2>
                 <h5>
-                  <NumberFormat
-                    value={product.price}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                  />{" "}
-                  $
+                  <span className="carousel_price">${product.price}</span>
                 </h5>
               </Fragment>
             </Carousel.Caption>

@@ -22,7 +22,6 @@ const HomeScreen = () => {
   if (+pageNumber === 0) {
     pageNumber = 1;
   }
-
   const productsList = useSelector((state) => state.productsList);
   let { loading, error, products, page, pages } = productsList;
 

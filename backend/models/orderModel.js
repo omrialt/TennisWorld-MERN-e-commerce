@@ -91,6 +91,11 @@ const orderSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    createdAtTime: {
+      type: Number,
+      required: true,
+      default: Date.now(),
+    },
   },
   { timestamps: true }
 );
