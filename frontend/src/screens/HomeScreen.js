@@ -27,6 +27,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     document.title = "TennisWorld|Home";
+    window.scrollTo(0, 0);
     dispatch(listProductsAll());
     dispatch(listProducts(pageNumber));
   }, [dispatch, pageNumber]);
