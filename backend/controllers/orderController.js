@@ -282,9 +282,6 @@ const getTopProductsSold = asyncHandler(async (req, res) => {
     .limit(5);
   res.json(products);
 });
-//action-get last orders
-//method-GET
-//route-/api/orders/last
 
 export {
   addOrderItems,

@@ -93,10 +93,12 @@ const ProductListScreen = () => {
     <Fragment>
       <Row>
         <Col md={9}>
-          <h1>Products</h1>
+          <h1>
+            Products <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+          </h1>
         </Col>
         <Col md={3}>
-          <Button className="my-3" onClick={createProductHandler}>
+          <Button className="my-3 btn-success" onClick={createProductHandler}>
             <i className="fas fa-plus"></i> Create Product
           </Button>
         </Col>

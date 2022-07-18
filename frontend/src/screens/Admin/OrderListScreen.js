@@ -31,7 +31,9 @@ const OrderListScreen = () => {
 
   return (
     <Fragment>
-      <h1>Orders</h1>
+      <h1>
+        Orders <i className="fa fa-exchange" aria-hidden="true"></i>
+      </h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -43,7 +45,7 @@ const OrderListScreen = () => {
           <thead>
             <tr>
               <th>Id</th>
-              <th>User Id</th>
+              <th>User(Id)</th>
               <th>Total Price</th>
               <th>Created At</th>
               <th>Is Paid</th>
@@ -56,7 +58,9 @@ const OrderListScreen = () => {
               return (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.user}</td>
+                  <td>
+                    {order.user.name}({order.user._id})
+                  </td>
                   <td>${order.totalPrice}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>

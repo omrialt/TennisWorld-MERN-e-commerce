@@ -106,8 +106,14 @@ const ProductScreen = () => {
 
   useEffect(() => {
     document.title = `${productName}`;
+    window.scrollTo(0, 0);
     if (successProductReview) {
-      alert("Review submitted");
+      Swal.fire({
+        icon: "success",
+        title: `Review Submitted!`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setRating(0);
       setComment("");
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
@@ -374,14 +380,16 @@ const ProductScreen = () => {
               </ListGroup>
             </Col>
           </Row>
-          <hr />
         </Fragment>
       )}
       <Fragment>
         {userInfo?.isAdmin && product.inOrders.length > 0 && (
           <Row>
+            <hr />
             <Col md={12}>
-              <h1>Stats</h1>
+              <h2>
+                Stats <i className="fa fa-signal" aria-hidden="true"></i>{" "}
+              </h2>
               <Table striped borders hover responsive className="table-sm">
                 <thead>
                   <tr>
@@ -417,6 +425,7 @@ const ProductScreen = () => {
             </Col>
           </Row>
         )}
+        <hr />
       </Fragment>
 
       {loadingSimilar ? (
@@ -433,7 +442,7 @@ const ProductScreen = () => {
               </Col>
             ))}
           </Row>
-
+          <hr />
           <h2>Other From {product.brand}:</h2>
           <Row>
             {productsList.brandList.length > 0 ? (

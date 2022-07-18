@@ -193,12 +193,12 @@ const getSimilarProducts = asyncHandler(async (req, res) => {
   const randomOrderBrand = await productsBrand.sort(
     (a, b) => 0.5 - Math.random()
   );
-  if (!productsCategory || !productsBrand) {
+  if (!productsCategory && !productsBrand) {
     res.json({ message: "Products not found" });
   }
   res.json({
-    categoryList: randomOrderCategory.slice(0, 3),
-    brandList: randomOrderBrand.slice(0, 3),
+    categoryList: randomOrderCategory.slice(0, 4),
+    brandList: randomOrderBrand.slice(0, 4),
   });
 });
 //action-get products by brand+category

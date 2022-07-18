@@ -15,7 +15,6 @@ import { validateEmail } from "../hooks/use-valid";
 import Input from "../utils/Input";
 const ProfileScreen = () => {
   const [message, setMessage] = useState(null);
-  const [orderList, setOrderList] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

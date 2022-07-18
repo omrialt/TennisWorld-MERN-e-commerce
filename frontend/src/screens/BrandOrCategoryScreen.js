@@ -56,11 +56,11 @@ const BrandOrCategoryScreen = () => {
 
   useEffect(() => {
     if (brandUpper.length === 1) {
-      document.title = categoryUpper;
+      document.title = `TennisWorld|${categoryUpper}`;
       dispatch(listBrandOrCategoryProducts("category", categoryUpper));
     }
     if (categoryUpper.length === 1) {
-      document.title = brandUpper;
+      document.title = `TennisWorld|${categoryUpper}`;
       dispatch(listBrandOrCategoryProducts("brand", brandUpper));
     }
     if (brandUpper.length === 1 && categoryUpper.length === 1) {

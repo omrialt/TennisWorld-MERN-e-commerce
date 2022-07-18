@@ -53,7 +53,7 @@ const BrandCategoryScreen = () => {
   };
 
   useEffect(() => {
-    document.title = `${brandUpper} ${categoryUpper}`;
+    document.title = `TennisWorld|${brandUpper} ${categoryUpper}`;
     dispatch(listBrandCategoryProducts(brandUpper, categoryUpper));
   }, [brand.length, brandUpper, category.length, categoryUpper, dispatch]);
 

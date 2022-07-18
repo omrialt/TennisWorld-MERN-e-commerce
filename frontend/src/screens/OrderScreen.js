@@ -99,19 +99,25 @@ const OrderScreen = () => {
       }
     }
   }, [dispatch, id, order, successPay, successDeliver, navigate, userInfo]);
-  console.log(userInfo);
+
   return loading ? (
     <Loader />
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
     <Fragment>
-      <h2>Order: {order._id}</h2>
+      <h1>Order Details</h1>
+      <h2>Id: {order._id}</h2>
+      {userInfo.isAdmin && <h2>User Id:{order.user._id}</h2>}
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroupItem>
               <h2>Shipping</h2>
+              <p>
+                <strong>Name: </strong>
+                {order.user.name}
+              </p>
               <p>
                 <strong>Address: </strong>
                 {order.shippingAddress.address},{order.shippingAddress.city}{" "}

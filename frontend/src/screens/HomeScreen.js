@@ -44,7 +44,8 @@ const HomeScreen = () => {
           </div>
         ))}
       </div>
-      <h1>Latest products</h1>
+      <hr />
+      <h1>Latest Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (

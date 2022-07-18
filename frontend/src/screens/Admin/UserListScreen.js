@@ -90,7 +90,9 @@ const UserListScreen = () => {
 
   return (
     <Fragment>
-      <h1>Users</h1>
+      <h1>
+        Users <i className="fa fa-users" aria-hidden="true"></i>
+      </h1>
       {loading ? (
         <Loader />
       ) : error ? (

@@ -5,6 +5,7 @@ main{
 h1{
   font-size: 1.8rem;
   padding: 1rem 0;
+  text-align: center;
 }
 h2{
   font-size: 1.4rem;
@@ -109,6 +110,8 @@ opacity: 0 !important
 .flex_brand{
   display: flex;
   flex-wrap: wrap;
+  
+ 
 }
 .div_brand{
   margin-left: 5rem
