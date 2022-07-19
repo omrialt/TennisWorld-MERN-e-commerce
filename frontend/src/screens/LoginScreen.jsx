@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { login } from "../store/Users/userActions";
 import UseValid from "../hooks/use-valid";
-import { validateEmail } from "../hooks/use-valid";
+import { validateEmail, validatePassword } from "../utils/validateFunctions";
 import Input from "../utils/Input";
 
 const LoginScreen = () => {
@@ -34,7 +34,7 @@ const LoginScreen = () => {
     valueChangeHandler: passwordChangeHandler,
     isValid: enteredPasswordIsValid,
     inputBlurHandler: passwordInputBlurHandler,
-  } = UseValid((value) => value.trim().length > 5);
+  } = UseValid((value) => validatePassword(value));
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ const LoginScreen = () => {
           onInputFn={passwordChangeHandler}
           onBlurFn={passwordInputBlurHandler}
           errorTernary={passwordInputHasError}
-          errorText="must be at least 6 characters"
+          errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
         />
         <Button
           disabled={!isValid}

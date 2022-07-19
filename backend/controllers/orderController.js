@@ -52,13 +52,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
     });
     for (const item of items) {
       const pro = await Product.findById(item.productId);
-      pro.countInStock -= items[0].qty;
-      pro.sold += items[0].qty;
+      pro.countInStock -= +items[0].qty;
+      pro.sold += +items[0].qty;
 
       pro.inOrders.push({
         orderId: order._id,
         createdAt: new Date(),
-        count: items[0].qty,
+        count: +items[0].qty,
         user: req.user,
       });
       await pro.save();

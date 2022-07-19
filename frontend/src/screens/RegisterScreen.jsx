@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { register } from "../store/Users/userActions";
 import UseValid from "../hooks/use-valid";
-import { validateEmail } from "../hooks/use-valid";
+import { validateEmail, validatePassword } from "../utils/validateFunctions";
 import Input from "../utils/Input";
 const RegisterScreen = () => {
   const [message, setMessage] = useState(null);
@@ -28,21 +28,21 @@ const RegisterScreen = () => {
     valueChangeHandler: passwordChangeHandler,
     isValid: enteredPasswordIsValid,
     inputBlurHandler: passwordInputBlurHandler,
-  } = UseValid((value) => value.trim().length > 5);
+  } = UseValid((value) => validatePassword(value));
   const {
     value: enteredPasswordConfirm,
     hasError: passwordConfirmInputHasError,
     valueChangeHandler: passwordConfirmChangeHandler,
     isValid: enteredPasswordConfirmIsValid,
     inputBlurHandler: passwordConfirmInputBlurHandler,
-  } = UseValid((value) => value.trim().length > 5);
+  } = UseValid((value) => validatePassword(value));
   const {
     value: enteredName,
     hasError: nameInputHasError,
     valueChangeHandler: nameChangeHandler,
     isValid: enteredNameIsValid,
     inputBlurHandler: nameInputBlurHandler,
-  } = UseValid((value) => value.trim().length > 3);
+  } = UseValid((value) => value.trim().length > 2);
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
@@ -99,7 +99,7 @@ const RegisterScreen = () => {
           onInputFn={nameChangeHandler}
           onBlurFn={nameInputBlurHandler}
           errorTernary={nameInputHasError}
-          errorText="must be at least 6 characters"
+          errorText="must be at least 3 characters"
         />
         <Input
           className={emailInputClasses}
@@ -121,7 +121,7 @@ const RegisterScreen = () => {
           onInputFn={passwordChangeHandler}
           onBlurFn={passwordInputBlurHandler}
           errorTernary={passwordInputHasError}
-          errorText="must be at least 6 characters"
+          errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
         />
         <Input
           className={passwordConfirmInputClasses}
@@ -132,7 +132,7 @@ const RegisterScreen = () => {
           onInputFn={passwordConfirmChangeHandler}
           onBlurFn={passwordConfirmInputBlurHandler}
           errorTernary={passwordConfirmInputHasError}
-          errorText="must be at least 6 characters"
+          errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
         />
 
         <Button

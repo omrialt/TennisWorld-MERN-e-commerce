@@ -214,7 +214,7 @@ const OrderScreen = () => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroupItem>
-              {!order.paidAt && (
+              {!order.paidAt && !userInfo?.isAdmin && (
                 <ListGroupItem>
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
@@ -227,6 +227,11 @@ const OrderScreen = () => {
                       />
                     )
                   )}
+                  <div style={{ color: "red" }}>
+                    <p>*for check please write*</p>
+                    <p>email:sb-ytaus17641151@personal.example.com</p>
+                    <p>password:PAYTRY1807</p>
+                  </div>
                 </ListGroupItem>
               )}
               {loadingDeliver && <Loader />}

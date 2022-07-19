@@ -19,6 +19,7 @@ import NotFound from "./screens/NotFoundScreen";
 import BrandCategoryScreen from "./screens/BrandCaregoryScreen";
 import BrandOrCategoryScreen from "./screens/BrandOrCategoryScreen";
 import ProductsStatsScreen from "./screens/Admin/ProductsStatsScreen";
+import AboutScreen from "./screens/AboutScreen";
 function App() {
   return (
     <Layout>
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />}></Route>
         <Route path="/register" element={<RegisterScreen />}></Route>
         <Route path="/profile" element={<ProfileScreen />}></Route>
+        <Route path="/about" element={<AboutScreen />}></Route>
         <Route path="/product/:id" element={<ProductScreen />} />
         <Route path="/cart/:id" element={<CartScreen />} />
         <Route path="/cart/" element={<CartScreen />} />

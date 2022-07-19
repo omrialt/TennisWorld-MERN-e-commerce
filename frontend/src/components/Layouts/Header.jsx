@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/Users/userActions";
 import { useNavigate } from "react-router-dom";
 import SearchBox from "./SearchBar";
-
+import "../../styles/header.css";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,6 +31,9 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <SearchBox />
             <Nav className="ms-auto">
+              <LinkContainer to="/about">
+                <Nav.Link>About</Nav.Link>
+              </LinkContainer>
               <NavDropdown title={"Brands"} id="brands">
                 <LinkContainer to={`/select/babolat/"`}>
                   <NavDropdown.Item>Babolat</NavDropdown.Item>

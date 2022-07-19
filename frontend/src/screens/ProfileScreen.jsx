@@ -11,7 +11,7 @@ import { listMyOrders } from "../store/Orders/orderActions";
 import { removeFromWishList } from "../store/Cart/CartActions";
 import { USER_UPDATE_PROFILE_RESET } from "../store/Users/userConstants";
 import UseValid from "../hooks/use-valid";
-import { validateEmail } from "../hooks/use-valid";
+import { validateEmail, validatePassword } from "../utils/validateFunctions";
 import Input from "../utils/Input";
 const ProfileScreen = () => {
   const [message, setMessage] = useState(null);
@@ -34,7 +34,7 @@ const ProfileScreen = () => {
     isValid: enteredPasswordIsValid,
     inputBlurHandler: passwordInputBlurHandler,
     reset: resetPasswordValue,
-  } = UseValid((value) => value.trim().length > 5);
+  } = UseValid((value) => validatePassword(value));
   const {
     value: enteredPasswordConfirm,
     hasError: passwordConfirmInputHasError,
@@ -42,7 +42,7 @@ const ProfileScreen = () => {
     isValid: enteredPasswordConfirmIsValid,
     inputBlurHandler: passwordConfirmInputBlurHandler,
     reset: resetPasswordConfirmValue,
-  } = UseValid((value) => value.trim().length > 5);
+  } = UseValid((value) => validatePassword(value));
   const {
     value: enteredName,
     hasError: nameInputHasError,
@@ -51,7 +51,7 @@ const ProfileScreen = () => {
     inputBlurHandler: nameInputBlurHandler,
     reset: resetNameValue,
     setEnteredValue: setNameValueHandler,
-  } = UseValid((value) => value.trim().length > 3);
+  } = UseValid((value) => value.trim().length > 2);
 
   //get user details
   const userDetails = useSelector((state) => state.userDetails);
@@ -167,7 +167,7 @@ const ProfileScreen = () => {
             onInputFn={nameChangeHandler}
             onBlurFn={nameInputBlurHandler}
             errorTernary={nameInputHasError}
-            errorText="must be at least 6 characters"
+            errorText="must be at least 3 characters"
           />
           <Input
             className={emailInputClasses}
@@ -189,7 +189,7 @@ const ProfileScreen = () => {
             onInputFn={passwordChangeHandler}
             onBlurFn={passwordInputBlurHandler}
             errorTernary={passwordInputHasError}
-            errorText="must be at least 6 characters"
+            errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
           />
           <Input
             className={passwordConfirmInputClasses}
@@ -200,7 +200,7 @@ const ProfileScreen = () => {
             onInputFn={passwordConfirmChangeHandler}
             onBlurFn={passwordConfirmInputBlurHandler}
             errorTernary={passwordConfirmInputHasError}
-            errorText="must be at least 6 characters"
+            errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
           />
 
           <Button

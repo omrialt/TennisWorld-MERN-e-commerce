@@ -1,6 +1,46 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import Joi from "joi";
+
+/*const cartSchema = mongoose.Schema({
+  productId: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  qty: {
+    type: Number,
+    required: true,
+  },
+});
+const wishListSchema = mongoose.Schema({
+  productId: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+});*/
 
 const userSchema = mongoose.Schema(
   {
@@ -32,18 +72,9 @@ userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
-  const salt = await bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(12);
   this.password = await bcrypt.hash(this.password, salt);
 });
 const User = mongoose.model("User", userSchema);
 
-export const validateUser = (user) => {
-  const schema = Joi.object({
-    name: Joi.string().required(),
-    email: Joi.string().email().required(),
-    password: Joi.string().min(6).required(),
-    isAdmin: Joi.boolean().required(),
-  });
-  return schema.validate(user);
-};
 export default User;
