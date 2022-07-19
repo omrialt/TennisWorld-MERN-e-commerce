@@ -1,0 +1,8 @@
+
+svg{
+    color: rgb(86, 85, 84);
+}
+svg:hover{
+    color: black;
+    transform: scale(1.2);
+}

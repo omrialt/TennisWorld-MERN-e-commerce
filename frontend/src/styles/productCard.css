@@ -1,0 +1,41 @@
+.product_card{
+    height: 480px;
+    position: relative;
+  }
+  
+  .product_card .center_div{
+    margin-top: 8px;
+    display: flex;  
+      justify-content: center;  
+      align-items: center; 
+  }
+  .product_card .center_div_btn{
+    display: flex;  
+      justify-content: center;  
+      align-items: center; 
+  }
+  .product_card .div_btn{
+       opacity: 1;
+    position: absolute;
+    bottom: 2;
+  }
+  .card-img-top:hover{
+    animation: imgAnimation 0.6s ease ;
+  }
+  @keyframes imgAnimation{
+    0%{
+      transform: scale(1.01);
+    }
+    25%{
+      transform: scale(1.02);
+    }
+    50%{
+      transform: scale(1.03);
+    }
+    75%{
+      transform: scale(1.04);
+    }
+    100%{
+      transform: scale(1.05);
+    }
+   }
