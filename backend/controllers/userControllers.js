@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import { validateUser, validateAuth } from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
@@ -21,6 +22,10 @@ const trasporter = nodemailer.createTransport(
 //access-any
 
 const authUser = asyncHandler(async (req, res) => {
+  const { error } = validateAuth(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user && (await user.matchPassword(password))) {
@@ -40,6 +45,10 @@ const authUser = asyncHandler(async (req, res) => {
 //route-/api/users
 //access-any
 const registerUser = asyncHandler(async (req, res) => {
+  const { error } = validateUser(req.body);
+  if (error) {
+    return res.status(400).json(error.details[0].message);
+  }
   const { name, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
@@ -95,6 +104,10 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //route-/api/users/profile
 //access-protect
 const updateUserProfile = asyncHandler(async (req, res) => {
+  const { error } = validateUser(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const user = await User.findById(req.user._id);
   if (user) {
     user.name = req.body.name || user.name;
