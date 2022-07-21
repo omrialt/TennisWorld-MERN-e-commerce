@@ -1,4 +1,5 @@
 import Order from "../models/orderModel.js";
+import { validateOrder } from "../models/orderModel.js";
 import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
@@ -21,6 +22,10 @@ const trasporter = nodemailer.createTransport(
 //route-/api/orders
 //access-protect
 const addOrderItems = asyncHandler(async (req, res) => {
+  const { error } = validateOrder(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const {
     orderItems,
     shippingAddress,
@@ -52,13 +57,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
     });
     for (const item of items) {
       const pro = await Product.findById(item.productId);
-      pro.countInStock -= +items[0].qty;
-      pro.sold += +items[0].qty;
+      pro.countInStock -= +item.qty;
+      pro.sold += +item.qty;
 
       pro.inOrders.push({
         orderId: order._id,
         createdAt: new Date(),
-        count: +items[0].qty,
+        count: +item.qty,
         user: req.user,
       });
       await pro.save();
