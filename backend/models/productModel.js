@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Joi from "joi";
 
 const reviewsSchema = mongoose.Schema(
   {
@@ -76,18 +77,9 @@ const productSchema = mongoose.Schema(
       type: String,
       minLength: 3,
     },
-    //length-for rackets and strings
-    length: {
-      type: String,
-      minLength: 3,
-    },
 
     //strings schema:
     gauge: {
-      type: String,
-      minLength: 3,
-    },
-    composition: {
       type: String,
       minLength: 3,
     },
@@ -138,5 +130,43 @@ const productSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+export function validateProduct(product) {
+  const schema = Joi.object({
+    _id: Joi.string(),
+    name: Joi.string().min(3).required(),
+    image: Joi.string().required(),
+    brand: Joi.string().required(),
+    category: Joi.string().required(),
+    description: Joi.string().required(),
+    headSize: Joi.string().min(3).allow(null),
+    length: Joi.string().min(3).allow(null),
+    weight: Joi.string().min(3).allow(null),
+    balance: Joi.string().min(3).allow(null),
+    composition: Joi.string().min(3).allow(null),
+    color: Joi.string().min(3).allow(null),
+    gauge: Joi.string().min(3).allow(null),
+    thickness: Joi.string().min(3).allow(null),
+    dimension: Joi.string().min(3).allow(null),
+    suitableFor: Joi.string().min(3).allow(null),
+    headSize: Joi.string().min(3).allow(null),
+    rating: Joi.number(),
+    price: Joi.number().required(),
+    countInStock: Joi.number().required(),
+    sold: Joi.number(),
+    inOrders: Joi.array(),
+  });
+  return schema.validate(product);
+}
+export function validateReview(review) {
+  const schema = Joi.object({
+    name: Joi.string().required(),
+    rating: Joi.number().required(),
+    comment: Joi.string().min(3).required(),
+  });
+  return schema.validate(review);
+}
+
 const Product = mongoose.model("Product", productSchema);
 export default Product;
+
