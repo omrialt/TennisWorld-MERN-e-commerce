@@ -18,7 +18,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       image: data.image,
       price: data.price,
       countInStock: data.countInStock,
-      qty,
+      qty: +qty,
     },
   });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
@@ -75,3 +75,4 @@ export const savePaymentMethod = (data) => (dispatch) => {
   });
   localStorage.setItem("paymentMethod", JSON.stringify(data));
 };
+
