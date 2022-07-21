@@ -1,3 +1,4 @@
+import Joi from "joi";
 import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema(
@@ -71,11 +72,12 @@ const orderSchema = mongoose.Schema(
       required: true,
       default: 0.0,
     },
-    totalPrice: {
+    itemsPrice: {
       type: Number,
       required: true,
-      default: false,
+      default: 0.0,
     },
+
     paidAt: {
       type: Date,
     },
@@ -99,5 +101,18 @@ const orderSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+export function validateOrder(order) {
+  const schema = Joi.object({
+    orderItems: Joi.array().required(),
+    shippingAddress: Joi.object().required(),
+    paymentMethod: Joi.string().required(),
+    itemsPrice: Joi.number().required(),
+    shippingPrice: Joi.number().required(),
+    taxPrice: Joi.number().required(),
+    totalPrice: Joi.number().required(),
+  });
+  return schema.validate(order);
+}
 const Order = mongoose.model("Order", orderSchema);
 export default Order;
