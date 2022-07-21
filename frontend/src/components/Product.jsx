@@ -90,6 +90,7 @@ const Product = ({ product }) => {
             style={{ height: "200px", width: "200px" }}
             src={product.image}
             variant="top"
+            alt={product.name}
           />
         </div>
       </Link>
