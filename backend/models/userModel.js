@@ -1,61 +1,24 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-
-/*const cartSchema = mongoose.Schema({
-  productId: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  qty: {
-    type: Number,
-    required: true,
-  },
-});
-const wishListSchema = mongoose.Schema({
-  productId: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-});*/
+import Joi from "joi";
 
 const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+      minLength: 2,
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      minLength: 2,
     },
     password: {
       type: String,
       required: true,
+      minLength: 8,
     },
     isAdmin: {
       type: Boolean,
@@ -75,6 +38,29 @@ userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(12);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+export function validateUser(user) {
+  const schema = Joi.object({
+    name: Joi.string().min(2).required(),
+    email: Joi.string().min(2).required().email(),
+    password: Joi.string()
+      .min(8)
+      .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
+      .required(),
+    isAdmin: Joi.boolean().default(false),
+  });
+  return schema.validate(user);
+}
+
+export function validateAuth(user) {
+  const schema = Joi.object({
+    email: Joi.string().required().email(),
+    password: Joi.string().min(8).required(),
+  });
+
+  return schema.validate(user);
+}
+
 const User = mongoose.model("User", userSchema);
 
 export default User;
