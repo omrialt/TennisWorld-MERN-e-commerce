@@ -144,7 +144,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     comment: req.body.comment,
   });
   if (error) {
-    console.log(error);
+   
     return res.status(400).send(error.details[0].message);
   }
   const { rating, comment } = req.body;
