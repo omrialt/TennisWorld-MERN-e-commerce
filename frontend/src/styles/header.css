@@ -31,9 +31,7 @@
     position: relative;
     cursor: pointer;
   }
-  .nav-link{
-    color: white;
-  }
+ 
   .nav-link:hover{
     transform: scale(1.1);
   }

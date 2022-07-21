@@ -1,4 +1,5 @@
 import Product from "../models/productModel.js";
+import { validateProduct, validateReview } from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
 
 //action-get all products
@@ -83,6 +84,10 @@ const createProduct = asyncHandler(async (req, res) => {
 //route-/api/products/:id
 //access-protect,admin
 const updateProduct = asyncHandler(async (req, res) => {
+  const { error } = validateProduct(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const {
     name,
     price,
@@ -133,6 +138,15 @@ const updateProduct = asyncHandler(async (req, res) => {
 //route-/api/products/:id/reviews
 //access-protect
 const createProductReview = asyncHandler(async (req, res) => {
+  const { error } = validateReview({
+    name: req.user.name,
+    rating: req.body.rating,
+    comment: req.body.comment,
+  });
+  if (error) {
+    console.log(error);
+    return res.status(400).send(error.details[0].message);
+  }
   const { rating, comment } = req.body;
   const product = await Product.findById(req.params.id);
   if (product) {

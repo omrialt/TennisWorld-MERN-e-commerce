@@ -74,9 +74,6 @@ const ProductScreen = () => {
       timer: 1500,
     });
     dispatch(addToCart(id, qty));
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
   };
   const addToWishListHandler = () => {
     Swal.fire({
@@ -86,9 +83,6 @@ const ProductScreen = () => {
       timer: 1500,
     });
     dispatch(addToWishList(id));
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
   };
   const navigateToEditProduct = (id) => {
     navigate(`/admin/product/${id}/edit`);
@@ -98,7 +92,7 @@ const ProductScreen = () => {
     e.preventDefault();
     dispatch(
       createProductReview(id, {
-        rating,
+        rating: +rating,
         comment,
       })
     );

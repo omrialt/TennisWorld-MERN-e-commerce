@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
-import { topOrders, lastOrders } from "../../store/Orders/orderActions";
+import { topOrders } from "../../store/Orders/orderActions";
 
 const ProductsStatsScreen = () => {
   const dispatch = useDispatch();
