@@ -189,7 +189,7 @@ const ProfileScreen = () => {
             onInputFn={passwordChangeHandler}
             onBlurFn={passwordInputBlurHandler}
             errorTernary={passwordInputHasError}
-            errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 1 number"
+            errorText="must be at least 8 characters with at least 1 capital letter, 1 symbol and 4 number"
           />
           <Input
             className={passwordConfirmInputClasses}
