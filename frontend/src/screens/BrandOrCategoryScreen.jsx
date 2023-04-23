@@ -60,7 +60,7 @@ const BrandOrCategoryScreen = () => {
       dispatch(listBrandOrCategoryProducts("category", categoryUpper));
     }
     if (categoryUpper.length === 1) {
-      document.title = `TennisWorld|${categoryUpper}`;
+      document.title = `TennisWorld|${brandUpper}`;
       dispatch(listBrandOrCategoryProducts("brand", brandUpper));
     }
     if (brandUpper.length === 1 && categoryUpper.length === 1) {
