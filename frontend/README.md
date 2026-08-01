@@ -1,42 +1,17 @@
-# TennisWorld-MERN-e-commerce
+# TennisWorld — frontend
 
-> eCommerce platform using MERN stack & Redux.
+Create React App client for TennisWorld. The project docs live in the
+[root README](../README.md).
 
-## Website
+Live site: https://tennisworld.vercel.app
 
-https://omrialtennis.herokuapp.com/
+## Scripts
 
-## Features
-
-- Full featured shopping cart and wishlist
-- Product reviews and ratings
-- Top products carousel
-- Product search feature
-- Product screen with similar brand & category suggestions in the bottom
-- Product add,edit and delete
-- User profile with orders and update
-- Admin management and stats page
-- Checkout process
-- PayPal / credit card integration
-- Mailer to send mails when user register,create order, pay and deliver
-
-## Usages
-
-Env Variables
-Create a .env file in then root and add the following
-
-```javascript
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-JWT_SECRET = your own string
-PAYPAL_CLIENT_ID = your paypal client id
-MAILER_API_KEY = your mailer api key
-MAIL_FROM=your mail
+```bash
+npm start   # dev server on :3000, proxies /api to :8000
+npm run build
+npm test
 ```
 
-deploy with heroku
-
-## To Use Admin Screens
-email:hackeru@test.com
-password:Hack@1234
+`npm start` expects the API to be running on port 8000 (`npm run server` from
+the repo root, or `npm run dev` to start both).
