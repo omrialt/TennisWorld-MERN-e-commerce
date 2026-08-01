@@ -7,8 +7,8 @@ node_modules
 /coverage
 
 /frontend/build
-/backend/data
-/backend/seeder
+
+.vercel
 
 .DS_Store
 .env

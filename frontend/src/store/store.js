@@ -1,6 +1,4 @@
-import { combineReducers, applyMiddleware } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "@redux-devtools/extension";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   productListAllReducer,
   productListReducer,
@@ -33,8 +31,6 @@ import {
   orderDeliverReducer,
   orderTopSalesReducer,
 } from "./Orders/orderReducer";
-
-import { createStore } from "redux";
 
 const reducer = combineReducers({
   productsListAll: productListAllReducer,
@@ -91,10 +87,17 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
 };
 
-const middleware = [thunk];
-const store = createStore(
+// configureStore bundles redux-thunk and the devtools extension, so the
+// separate redux / redux-thunk / @redux-devtools/extension packages are gone.
+// The reducers here are hand-written (non-Immer) and store non-serializable
+// Error values in their error slices, so RTK's dev-only checks are off.
+const store = configureStore({
   reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+  preloadedState: initialState,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      immutableCheck: false,
+    }),
+});
 export default store;

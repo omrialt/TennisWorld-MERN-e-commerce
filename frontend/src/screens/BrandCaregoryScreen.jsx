@@ -10,7 +10,7 @@ import Loader from "../components/Loader";
 import brandsArray from "../utils/brands";
 
 const BrandCategoryScreen = () => {
-  const [productList, setProductList] = useState([]);
+  const [, setProductList] = useState([]);
   const dispatch = useDispatch();
 
   const { brand, category } = useParams();

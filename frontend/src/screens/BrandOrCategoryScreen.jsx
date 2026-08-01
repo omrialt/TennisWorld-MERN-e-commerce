@@ -10,7 +10,7 @@ import Loader from "../components/Loader";
 import brandsArray from "../utils/brands";
 
 const BrandOrCategoryScreen = () => {
-  const [productList, setProductList] = useState([]);
+  const [, setProductList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
 

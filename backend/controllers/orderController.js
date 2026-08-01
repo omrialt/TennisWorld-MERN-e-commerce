@@ -4,18 +4,9 @@ import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
-import sendgridTransport from "nodemailer-sendgrid-transport";
+import sendMail from "../utils/sendMail.js";
 
 dotenv.config();
-
-const trasporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.MAILER_API_KEY,
-    },
-  })
-);
 
 //action-create new order
 //method-POST
@@ -71,9 +62,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
     const { name, email } = req.user;
     const createdOrder = await order.save();
     res.status(201).json(createdOrder);
-    await trasporter.sendMail({
+    await sendMail({
       to: email,
-      from: process.env.MAIL_FROM,
       subject: `There is your order`,
       html: `<h2>Hey ${name}!</h2>
       <p>There is your order details</p>
@@ -155,9 +145,8 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     const updatedOrder = await order.save();
     res.json(updatedOrder);
 
-    await trasporter.sendMail({
+    await sendMail({
       to: userPaid.email,
-      from: process.env.MAIL_FROM,
       subject: `Paid succeeded-order ${order._id}!`,
       html: `<h2>Hey ${userPaid.name}!</h2>
       <p>We received your pay for order ${order._id} ($${
@@ -223,9 +212,8 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
     const updatedOrder = await order.save();
     res.json(updatedOrder);
     const userPaid = await User.findById(updatedOrder.user);
-    await trasporter.sendMail({
+    await sendMail({
       to: userPaid.email,
-      from: process.env.MAIL_FROM,
       subject: `Your order was shipped-order ${order._id}!`,
       html: `<h2>Hey ${userPaid.name}!</h2>
       <p>We shipped your order ${order._id} and you will get it soon</p>

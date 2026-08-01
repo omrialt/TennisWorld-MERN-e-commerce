@@ -169,6 +169,10 @@ const ProductEditScreen = () => {
   const productDetail = useSelector((state) => state.productDetail);
   const { loading, error, product } = productDetail;
 
+  //get user info - /api/upload is admin-only
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   //update product detail
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
@@ -186,6 +190,7 @@ const ProductEditScreen = () => {
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
+          x_auth_token: userInfo.token,
         },
       };
       const { data } = await axios.post("/api/upload", formData, config);

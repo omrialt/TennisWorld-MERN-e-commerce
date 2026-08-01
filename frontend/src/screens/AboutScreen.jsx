@@ -8,7 +8,7 @@ const AboutScreen = () => {
         <p>Here you can find the best tennis products</p>
         <p>
           All the information and photos from{" "}
-          <a href="https://www.tennis-warehouse.com" target="_blank">
+          <a href="https://www.tennis-warehouse.com" target="_blank" rel="noreferrer">
             Tennis Warehouse
           </a>
         </p>

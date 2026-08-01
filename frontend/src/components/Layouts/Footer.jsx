@@ -19,6 +19,7 @@ const Footer = () => {
                   className="text-muted"
                   href="https://www.linkedin.com/in/omri-altaras-8a9843224/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +38,7 @@ const Footer = () => {
                   className="text-muted"
                   href="https://github.com/omrialt"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +57,7 @@ const Footer = () => {
                   className="text-muted"
                   href="https://api.whatsapp.com/send?phone=972546630205&text=Hey Omri! can i see some of your works ?"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +76,7 @@ const Footer = () => {
                   className="text-muted"
                   href="mailto:omrialt@gmail.com"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

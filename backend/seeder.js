@@ -10,7 +10,9 @@ import connectDB from "./config/db.js";
 
 dotenv.config();
 
-connectDB();
+// bufferCommands is off, so the connection must be established before any
+// model operation runs.
+await connectDB();
 
 const importData = async () => {
   try {

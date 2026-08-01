@@ -3,18 +3,9 @@ import User from "../models/userModel.js";
 import { validateUser, validateAuth } from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
-import sendgridTransport from "nodemailer-sendgrid-transport";
+import sendMail from "../utils/sendMail.js";
 
 dotenv.config();
-
-const trasporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.MAILER_API_KEY,
-    },
-  })
-);
 
 //action-authenticate user
 //method-POST
@@ -68,9 +59,8 @@ const registerUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
-    await trasporter.sendMail({
+    await sendMail({
       to: email,
-      from: process.env.MAIL_FROM,
       subject: "Register succeeded!",
       html: `<h2>Hey ${user.name}!</h2>
       <p>Your account create successfully</p>`,
@@ -144,7 +134,7 @@ const getUsers = asyncHandler(async (req, res) => {
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (user) {
-    await user.remove();
+    await user.deleteOne();
     res.json({ message: "user removed" });
   } else {
     return res.status(404).json({ message: "User not found" });

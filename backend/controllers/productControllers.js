@@ -23,7 +23,7 @@ const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 16;
   const page = +req.query.pageNumber || 1;
 
-  const count = await Product.count();
+  const count = await Product.countDocuments();
   const products = await Product.find()
     .limit(pageSize)
     .skip(pageSize * (page - 1));
@@ -51,7 +51,7 @@ const getProductById = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
-    await product.remove();
+    await product.deleteOne();
     res.json({ message: "Product remove" });
   }
   if (!product) {
