@@ -29,6 +29,7 @@ import Product from "../components/Product";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../store/Products/productConstants";
 import { addToWishList, addToCart } from "../store/Cart/CartActions";
 import { LinkContainer } from "react-router-bootstrap";
+import { formatDate } from "../utils/formatDate";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
@@ -317,7 +318,7 @@ const ProductScreen = () => {
                     <ListGroupItem key={review._id}>
                       <strong>{review.name}</strong>
                       <Rating value={review.rating} />
-                      <p>{review.createdAt.substring(0, 10)}</p>
+                      <p>{formatDate(review.createdAt)}</p>
                       <p>{review.comment}</p>
                     </ListGroupItem>
                   );
@@ -402,7 +403,7 @@ const ProductScreen = () => {
                         <td>
                           {order.user.name}({order.user._id})
                         </td>
-                        <td>{order.createdAt.substring(0, 10)}</td>
+                        <td>{formatDate(order.createdAt)}</td>
                         <td>{order.count}</td>
                         <td>
                           <LinkContainer to={`/order/${order.orderId}`}>

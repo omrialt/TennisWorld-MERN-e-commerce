@@ -6,6 +6,7 @@ import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
 import { listOrders, topOrders } from "../../store/Orders/orderActions";
+import { formatDate } from "../../utils/formatDate";
 
 const OrderListScreen = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ const OrderListScreen = () => {
                     {order.user.name}({order.user._id})
                   </td>
                   <td>${order.totalPrice}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{formatDate(order.createdAt)}</td>
                   <td>
                     {order.isPaid ? (
                       <i

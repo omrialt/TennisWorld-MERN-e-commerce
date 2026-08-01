@@ -13,6 +13,7 @@ import { USER_UPDATE_PROFILE_RESET } from "../store/Users/userConstants";
 import UseValid from "../hooks/use-valid";
 import { validateEmail, validatePassword } from "../utils/validateFunctions";
 import Input from "../utils/Input";
+import { formatDate } from "../utils/formatDate";
 const ProfileScreen = () => {
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
@@ -239,11 +240,11 @@ const ProfileScreen = () => {
                   return (
                     <tr key={order._id}>
                       <td>{order._id}</td>
-                      <td>{order.createdAt.substring(0, 10)}</td>
+                      <td>{formatDate(order.createdAt)}</td>
                       <td>{order.totalPrice}</td>
                       <td>
                         {order.isPaid ? (
-                          order.paidAt.substring(0, 10)
+                          formatDate(order.paidAt)
                         ) : (
                           <i
                             style={{ color: "red" }}
@@ -253,7 +254,7 @@ const ProfileScreen = () => {
                       </td>
                       <td>
                         {order.isDelivered ? (
-                          order.deliveredAt.substring(0, 10)
+                          formatDate(order.deliveredAt)
                         ) : (
                           <i
                             style={{ color: "red" }}

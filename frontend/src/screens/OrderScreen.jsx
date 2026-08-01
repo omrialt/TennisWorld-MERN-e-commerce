@@ -26,6 +26,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../store/Orders/orderConstants";
+import { formatDate, formatTime } from "../utils/formatDate";
 
 const OrderScreen = () => {
   const [paypalClientId, setPaypalClientId] = useState(null);
@@ -122,8 +123,8 @@ const OrderScreen = () => {
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
-                  Delivered at:{order.deliveredAt.substring(0, 10)}{" "}
-                  {order.deliveredAt.substring(11, 16)}
+                  Delivered at:{formatDate(order.deliveredAt)}{" "}
+                  {formatTime(order.deliveredAt)}
                 </Message>
               ) : (
                 <Message variant="danger">Not delivered</Message>
@@ -137,8 +138,8 @@ const OrderScreen = () => {
               </p>
               {order.paidAt ? (
                 <Message variant="success">
-                  Paid on: {order.paidAt.substring(0, 10)}{" "}
-                  {order.paidAt.substring(11, 16)}
+                  Paid on: {formatDate(order.paidAt)}{" "}
+                  {formatTime(order.paidAt)}
                 </Message>
               ) : (
                 <Message variant="danger">Not paid</Message>
