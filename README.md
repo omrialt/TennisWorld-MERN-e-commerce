@@ -101,7 +101,3 @@ Set `MONGO_URI`, `JWT_SECRET`, `PAYPAL_CLIENT_ID`, `MAILER_API_KEY`,
 `MAIL_FROM` and `NODE_ENV=production` in the Vercel project's environment
 variables, and connect a Blob store if you want admin image upload to work.
 
-## To Use Admin Screens
-
-email: hackeru@test.com
-password: Hack@1234
